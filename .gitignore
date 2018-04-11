@@ -1,0 +1,4 @@
+.vagrant
+www/phpmyadmin
+www/uploads
+Vagrantfile
