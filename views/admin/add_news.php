@@ -97,7 +97,6 @@ echo $display ?><br><select class="dropdown-product selectpicker" name="category
 </option>
 <?php getNewsCateg($conn) ?>
 </select>
-
 </div>
 </div>
 <br>
