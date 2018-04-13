@@ -21,7 +21,7 @@ function getNewsCateg($dbconn){
   $stmt->execute();
   while($row = $stmt->fetch(PDO::FETCH_BOTH)){
     extract($row);
-    echo '<option value="'.$news_category.'">'.$news_category.'</option>';
+    echo '<option value="'.$hash_id.'">'.$news_category.'</option>';
   }
 }
 
@@ -190,6 +190,30 @@ $suc = 'Registration Successful';
    header("Location:/manageArticles?success=$succ");
  }
 
+ function addCampusArticle($dbconn,$post,$destn, $sess){
+   $rnd = rand(0000000000,9999999999);
+   $split = explode(" ",$post['title']);
+   $id = $rnd.$split['0'];
+   $hash_id = 'article'.str_shuffle($id);
+   $stmt = $dbconn->prepare("INSERT INTO blog VALUES(NULL, :tt,:au,:cm,:vis,:bd,:img1,:sess,NOW(),NOW(),:hsh)");
+   $data = [
+     ':tt' => $post['title'],
+     ':au' => $post['author'],
+     ':cm' => $post['campus'],
+     ':vis' => $post['visibility'],
+     ':bd' => $post['body'],
+     ':img1' => $destn['a'],
+     ':sess' => $sess,
+     ':hsh' => $hash_id
+   ];
+   $stmt->execute($data);
+   logs($dbconn, 'added', $post['title'],'article',$sess);
+   $success = "Article Post Uploaded";
+   $succ = preg_replace('/\s+/', '_', $success);
+
+   header("Location:/manageArticles?success=$succ");
+ }
+
  function addInsight($dbconn,$post,$destn, $sess){
    $rnd = rand(0000000000,9999999999);
    $split = explode(" ",$post['title']);
@@ -235,6 +259,30 @@ $suc = 'Registration Successful';
    $succ = preg_replace('/\s+/', '_', $success);
 
    header("Location:/manageNews?success=$succ");
+ }
+
+ function addCampusNews($dbconn,$post,$destn, $sess){
+   $rnd = rand(0000000000,9999999999);
+   $split = explode(" ",$post['title']);
+   $id = $rnd.$split['0'];
+   $hash_id = 'news'.str_shuffle($id);
+   $stmt = $dbconn->prepare("INSERT INTO campus_news VALUES(NULL, :tt,:lnk,:vis,:cat,:bd,:img1,:sess,NOW(),NOW(),:hsh)");
+   $data = [
+     ':tt' => $post['title'],
+     ':lnk' => $post['link'],
+     ':vis' => $post['visibility'],
+     ':cat' => $post['category'],
+     ':bd' => $post['body'],
+     ':img1' => $destn['a'],
+     ':sess' => $sess,
+     ':hsh' => $hash_id
+   ];
+   $stmt->execute($data);
+   logs($dbconn, 'added', $post['title'],'news',$sess);
+   $success = "Campus News Post Uploaded";
+   $succ = preg_replace('/\s+/', '_', $success);
+
+   header("Location:/manageCampusNews?success=$succ");
  }
 
 
@@ -416,6 +464,24 @@ $suc = 'Registration Successful';
    $success = "News Category $package_name Added";
    $succ = preg_replace('/\s+/', '_', $success);
    header("Location:/newsCategory?success=$succ");
+ }
+ function addCampus($dbconn,$post, $sess){
+   $rnd = rand(0000000000,9999999999);
+   $split = strtoupper($_POST['package_name']);
+   $id = $rnd.$split;
+   $hash_id = str_shuffle($id);
+   $stmt = $dbconn->prepare("INSERT INTO campus VALUES(NULL,:pn,:hid,NOW(),NOW(),:sess)");
+   $data = [
+     ':pn' => $post['package_name'],
+     ':hid' => $hash_id,
+     ':sess' => $sess,
+   ];
+   $stmt->execute($data);
+   logs($dbconn, 'added', $post['package_name'],'campus',$sess);
+   $package_name = $post['package_name'];
+   $success = "Campus $package_name Added";
+   $succ = preg_replace('/\s+/', '_', $success);
+   header("Location:/campus?success=$succ");
  }
 
 
@@ -713,6 +779,22 @@ $success = "edited Successfully";
 $succ = preg_replace('/\s+/', '_', $success);
 header("Location:/manageNews?success=$succ");
 }
+function editCampusNews($dbconn,$post,$gid){
+$stmt = $dbconn->prepare("UPDATE campus_news SET headline=:tt, link=:au, body=:bd WHERE hash_id=:hid");
+$stmt->bindParam(":tt", $post['title']);
+$stmt->bindParam(":au", $post['link']);
+$stmt->bindParam(":bd", $post['body']);
+$stmt->bindParam(":hid", $gid);
+
+$stmt->execute();
+if(isset($_SESSION['id'])){
+  $sess = $_SESSION['id'];
+}
+logs($dbconn, 'edited', $post['title'],'news',$sess);
+$success = "edited Successfully";
+$succ = preg_replace('/\s+/', '_', $success);
+header("Location:/manageCampusNews?success=$succ");
+}
 
 
 
@@ -804,7 +886,7 @@ header("Location:/manageNews?success=$succ");
     if($level == 3 || $level == "MASTER"){
       echo '<tr><td width="150px" class="ads-details-td>
       <h4><a href="'.$link.'">'.$headline.'</a></h4>
-      <p> <strong> Link </strong>:
+      <p> <strong> Author </strong>:
       '.$link.'</p>
       <p> <strong> Category </strong>:
       '.$category.'</p>
@@ -850,7 +932,7 @@ header("Location:/manageNews?success=$succ");
     if($level == 2){
       echo '<tr><td class="ads-details-td>
       <h4><a href="'.$link.'">'.$headline.'</a></h4>
-      <p> <strong> Link </strong>:
+      <p> <strong> Author </strong>:
       '.$link.'</p>
       <p> <strong> Category </strong>:
       '.$category.'</p>
@@ -890,10 +972,157 @@ header("Location:/manageNews?success=$succ");
 
       echo '<tr><td class="ads-details-td>
       <h4><a href="'.$link.'">'.$headline.'</a></h4>
-      <p> <strong> Link </strong>:
+      <p> <strong> Author </strong>:
       '.$link.'</p>
       <p> <strong> Category </strong>:
       '.$category.'</p>
+      </td>
+      <td class="ads-details-td">
+      <a href="viewBody?id='.$hash_id.'&t=news"><p>'.$bd.'...</p></a>
+
+      </td>
+      <td class="add-img-td">
+      <a href="#">
+      <img class="img-responsive" src="'.$image_1.'">
+      </a>
+      </td>
+      <td class="add-img-td">
+      '.$created_by.'
+      </td>
+      <td class="add-img-td">
+      '.$date_created.'
+      </td>
+      <td class="add-img-td">
+      '.$visibility.'
+      </td>
+      <td class="ads-details-td">
+      You cannot perform this action
+      </td>
+
+      <td class="price-td">
+      <p>You cannot Perform this Action</p>
+      </td>
+      <td class="price-td">
+        <p>You cannot Perform this Action</p>
+      </td>
+      </tr>';
+
+    }
+
+
+
+
+
+
+
+
+   }
+
+ }
+ function getCampusNewsView($dbconn,$get){
+   $stmt = $dbconn->prepare("SELECT * FROM campus_news ORDER BY id DESC");
+   $stmt->execute();
+   while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+     extract($row);
+    $bd = previewBody($body, 20);
+
+
+
+    $level =  adminLevel($dbconn,$get);
+
+    if($level == 3 || $level == "MASTER"){
+      echo '<tr><td width="150px" class="ads-details-td>
+      <h4><a href="'.$link.'">'.$headline.'</a></h4>
+      <p> <strong> Author </strong>:
+      '.$link.'</p>
+      <p> <strong> Campus </strong>:
+      '.$campus.'</p>
+      </td>
+      <td class="ads-details-td">
+      <a href="viewBody?id='.$hash_id.'&t=campus_news"><p>'.$bd.'...</p></a>
+
+      </td>
+      <td class="add-img-td">
+      <a href="editImage?id='.$hash_id.'&t=campus_news">
+      <img class="img-responsive" src="'.$image_1.'">
+      </a>
+      </td>
+      <td class="add-img-td">
+      '.$created_by.'
+      </td>
+      <td class="add-img-td">
+      '.$date_created.'
+      </td>
+      <td class="add-img-td">
+      '.$visibility.'
+      </td>
+      <td class="ads-details-td">
+        <a href="editCampusNews?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
+      </td>
+
+      <td class="price-td">
+        <a href="deleteNews?id='.$hash_id.'">
+         <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+        </a>
+      </td>
+      <td class="price-td">
+        <a href="show?id='.$hash_id.'&t=campus_news">
+         <button class="btn btn-success btn-sm" type="submit">Show</button>
+        </a>
+        <a href="hide?id='.$hash_id.'&t=campus_news">
+         <button class="btn btn-basic btn-sm" type="submit">Hide</button>
+        </a>
+      </td></tr>';
+
+    }
+
+    if($level == 2){
+      echo '<tr><td class="ads-details-td>
+      <h4><a href="'.$link.'">'.$headline.'</a></h4>
+      <p> <strong> Author </strong>:
+      '.$link.'</p>
+      <p> <strong> Campus </strong>:
+      '.$campus.'</p>
+      </td>
+      <td class="ads-details-td">
+      <a href="viewBody?id='.$hash_id.'&t=campus_news"><p>'.$bd.'...</p></a>
+
+      </td>
+      <td class="add-img-td">
+      <a href="editImage?id='.$hash_id.'&t=campus_news">
+      <img class="img-responsive" src="'.$image_1.'">
+      </a>
+      </td>
+      <td class="add-img-td">
+      '.$created_by.'
+      </td>
+      <td class="add-img-td">
+      '.$date_created.'
+      </td>
+      <td class="add-img-td">
+      '.$visibility.'
+      </td>
+      <td class="ads-details-td">
+        <a href="editCampusNews?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
+      </td>
+
+      <td class="price-td">
+      <p>You cannot Perform this Action</p>
+      </td>
+      <td class="price-td">
+        <p>You cannot Perform this Action</p>
+      </td>
+      </tr>';
+    }
+
+    if($level == 1){
+
+      echo '<tr><td class="ads-details-td>
+      <h4><a href="'.$link.'">'.$headline.'</a></h4>
+      <p> <strong> Author </strong>:
+      '.$link.'</p>
+      <p> <strong> Campus </strong>:
+      '.$campus.'</p>
       </td>
       <td class="ads-details-td">
       <a href="viewBody?id='.$hash_id.'&t=news"><p>'.$bd.'...</p></a>
@@ -1650,8 +1879,20 @@ function getAbout($dbconn,$get){
    $stmt->execute();
    while($row = $stmt->fetch(PDO::FETCH_BOTH)){
      extract($row);
-     echo '<option value="'.$hash_id.'">
+     echo '<option value="'.$news_category.'">
      '.$news_category.'
+     </option>';
+   }
+
+ }
+ function getCampus($dbconn){
+   $stmt = $dbconn->prepare("SELECT * FROM campus");
+
+   $stmt->execute();
+   while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+     extract($row);
+     echo '<option value="'.$hash_id.'">
+     '.$campus_name.'
      </option>';
    }
 
@@ -1746,6 +1987,18 @@ function getAbout($dbconn,$get){
    $succ = preg_replace('/\s+/', '_', $success);
 
    header("Location:/manageNews?success=$succ");
+ }
+ function deleteCampusNews($dbconn,$img,$hid){
+   $myFile = $img;
+   $stmt = $dbconn->prepare("DELETE FROM campus_news WHERE hash_id=:hid");
+   $stmt->bindParam(":hid", $hid);
+   $stmt->execute();
+   unlink($myFile) or die("Unable to delete");
+
+   $success = "Deleted";
+   $succ = preg_replace('/\s+/', '_', $success);
+
+   header("Location:/manageCampusNews?success=$succ");
  }
 
  function logs($dbconn, $type, $content,$category,$who){

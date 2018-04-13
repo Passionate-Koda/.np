@@ -89,8 +89,13 @@ switch ($uri[1]) {
   case "addTraining":
   include APP_PATH."/views/admin/add_trainings.php";
   break;
+
   case "addNews":
   include APP_PATH."/views/admin/add_news.php";
+  break;
+
+  case "addCampusNews":
+  include APP_PATH."/views/admin/add_campus_news.php";
   break;
 
   case "addResources":
@@ -177,6 +182,14 @@ switch ($uri[1]) {
   include APP_PATH."/views/admin/view_news.php";
   break;
 
+  case "manageCampusNews":
+  include APP_PATH."/views/admin/view_campus_news.php";
+  break;
+
+  case "manageCampusNews?success=$success":
+  include APP_PATH."/views/admin/view_campus_news.php";
+  break;
+
   case "manageEvent":
   include APP_PATH."/views/admin/view_event.php";
   break;
@@ -232,6 +245,9 @@ switch ($uri[1]) {
   case "editNews?id=$id":
   include APP_PATH."/views/admin/edit_news.php";
   break;
+  case "editCampusNews?id=$id":
+  include APP_PATH."/views/admin/edit_campus_news.php";
+  break;
   case "manageNews?success=$success":
   include APP_PATH."/views/admin/view_news.php";
   break;
@@ -253,7 +269,14 @@ switch ($uri[1]) {
   break;
 
   case "newsCategory?success=$success":
-  include APP_PATH."/views/admin/add_news.php";
+  include APP_PATH."/views/admin/add_news_category.php";
+  break;
+  case "campus":
+  include APP_PATH."/views/admin/add_campus.php";
+  break;
+
+  case "campus?success=$success":
+  include APP_PATH."/views/admin/add_campus.php";
   break;
 
   case "addProfile":

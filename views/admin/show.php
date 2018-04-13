@@ -26,6 +26,9 @@ header("location:manageTrainings");
 if($tb == "insight"){
 header("location:manageInsights");
 }
+if($tb == "campus_news"){
+header("location:manageCampusNews");
+}
 // if($tb == ""){
 // header("location:manageTrainings");
 // }

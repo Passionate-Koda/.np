@@ -12,44 +12,45 @@ $info = adminInfo($conn,$session);
 extract($info);
 $fname = ucwords($firstname);
 $lname = ucwords($lastname);
-
-
-
-
-
-
-
 $error= [];
 
 if(array_key_exists('submit', $_POST)){
-  $ext = ["image/jpg", "image/JPG", "image/jpeg", "image/JPEG", "image/png", "image/PNG"];
-  if(empty($_FILES['upload']['name'])){
-    $error['upload'] = "Please choose file";
-  }
-
-  if(empty($_POST['title'])){
-    $error['title']="Enter a Title";
-  }
-
-  if(empty($_POST['link'])){
-    $error['link']="Enter a Link";
-  }
-
-
-  if(empty($_POST['body'])){
-    $error['body']="Enter a body";
-  }
-  if(empty($_POST['visibility'])){
-    $error['visibility']="Enter a Visibility";
+  if(empty($_POST['package_name'])){
+    $error['package_name']="Enter a Package Name";
   }
 
   if(empty($error)){
-    $ver['a'] = compressImage($_FILES,'upload',50, 'uploads/' );
-
     $clean = array_map('trim', $_POST);
-    addNews($conn, $clean,$ver,$hash_id);
+    addCampus($conn,$clean,$hash_id);
   }
 }
+
+if(array_key_exists('add', $_POST)){
+  if(empty($_POST['package_list'])){
+    $error['package_list']="Enter a Package List";
+  }
+
+  if(empty($error)){
+    $clean = array_map('trim', $_POST);
+    addPackageList($conn,$clean,$hash_id);
+  }
+}
+
+if(array_key_exists('commit', $_POST)){
+
+  if(empty($_POST['package_n'])){
+    $error['package_n']="Enter a Package Name";
+  }
+  if(empty($_POST['package_l'])){
+    $error['package_l']="Enter a Package List";
+  }
+
+  if(empty($error)){
+    $clean = array_map('trim', $_POST);
+    addPackage($conn,$clean,$hash_id);
+  }
+}
+
  ?>
 <section id="content">
 <div class="container">
@@ -68,96 +69,83 @@ if(array_key_exists('submit', $_POST)){
   } ?>
 <div class="col-sm-12 col-md-10 col-md-offset-1">
 <div class="page-ads box">
-<h2 class="title-2">Welcome to the News page</h2>
-<div class="row search-bar mb30 red-bg">
+<h2 class="title-2">Welcome to the Add News page</h2>
+<div class="row search-bar mb30 ">
 <div class="advanced-search">
-<form class="search-form" method="get">
+
 <div class="col-md-4 col-sm-12 search-col">
-<h3>Please post your .</h3>
+<h3>News Categories.</h3>
 </div>
+</div>
+</div>
+<form class="form-ad" method="post" action="">
+<div class="form-group mb30">
+<label class="control-label">News Name</label> <?php $display = displayErrors($error, 'package_name');
+echo $display ?><input class="form-control input-md" name="package_name" placeholder=" Write Your News Name" type="text">
+<input class="btn btn-common" type="submit" name="submit" value="ADD">
 </form>
 </div>
-</div>
-<form class="form-ad" action="" method="post" enctype="multipart/form-data">
+<!-- <form class="form-ad" method="post" action="">
 <div class="form-group mb30">
-<label class="control-label">News Headline</label><?php $display = displayErrors($error, 'title');
-echo $display ?> <input class="form-control input-md" name="title" placeholder="Write a suitable headline"  type="text">
+<label class="control-label">Package List</label> <?php //$display = displayErrors($error, 'package_list');echo $display ?><input class="form-control input-md" name="package_list" placeholder="Add package list" type="text">
+<input class="btn btn-common" type="submit" name="add" value="ADD">
+<br/>
+<br/>
+</form>
+</div> -->
+
+
+
+<hr>
+<div class="row search-bar mb30 ">
+<div class="advanced-search">
+
+<div class="col-md-4 col-sm-12 search-col">
+<h3>News Sub Categories.</h3>
 </div>
+</div>
+</div>
+<form class="form-ad" method="post" action="">
 <div class="form-group mb30">
-<label class="control-label">Author</label><?php $display = displayErrors($error, 'author');
-echo $display ?> <input class="form-control input-md" name="link" placeholder="Enter News Author here"  type="text">
-</div>
+<label class="control-label">NEWS CATEGORY</label><br>
+
 <div class="col-md-4 col-sm-4 col-xs-12 search-bar search-bar-nostyle">
+
 <div class="input-group-addon search-category-container">
 
-<label class="control-labell">News Category </label>  <?php $display = displayErrors($error, 'visibility');
-echo $display ?><br><select class="dropdown-product selectpicker" name="category" required>
+<label class="control-label"> <select class="dropdown-product selectpicker" required name="package_n">
 <option value="">
---Select--
+--SELECT--
 </option>
-<?php getNewsCateg($conn) ?>
+<?php getCampus($conn); ?>
 </select>
+<br/>
+<br/>
 </div>
 </div>
 <br>
 <br>
 <br>
 <div class="form-group mb30">
-<label class="control-label" for="textarea">Body</label>
-<?php $display = displayErrors($error, 'body');
-echo $display ?>
-<textarea class="form-control"  id="editor" name="body" placeholder="Write your article here" rows="4"></textarea>
+<label class="control-label">NEWS SUB CATEGORY</label> <?php $display = displayErrors($error, 'package_l');
+echo $display ?><input class="form-control input-md" name="package_l" placeholder=" Write Your Selected News Sub Category" type="text">
 </div>
 
-  <br/>
-  <div class="col-md-4 col-sm-4 col-xs-12 search-bar search-bar-nostyle">
-<div class="input-group-addon search-category-container">
 
-<label class="control-labell">VISIBILITY </label>  <?php $display = displayErrors($error, 'visibility');
-  echo $display ?><br><select class="dropdown-product selectpicker" name="visibility">
-<option value="hide">
---Admin Decision--
-</option>
-</select>
+<input class="btn btn-common" type="submit" name="commit" value="ADD">
 
-</div>
-</div>
-
-<br/>
-<br/>
-<br/>
-
-<h2 class="title-2">Add Image here</h2>
-<div class="form-group">
-<label class="control-label">Add images</label>
-<?php $display = displayErrors($error, 'upload');
-  echo $display ?> <br>
- <input class="file" id="featured-img" type="file" name="upload"><br>
-<br>
-<input type="submit" class="btn btn-common" name="submit" value="Add">
 </form>
 </div>
+<br>
+<br>
 </div>
 </div>
 </div>
-
+</div>
+</div>
 </section>
 
 <a class="back-to-top" href="#"><i class="fa fa-angle-up"></i></a>
-<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> -->
-
-
-<script>
-  ClassicEditor
-    .create( document.querySelector( '#editor' ) )
-    .then( editor => {
-      console.log( editor );
-    } )
-    .catch( error => {
-      console.error( error );
-    } );
-</script>
 <script src="assets/js/jquery-min.js" type="text/javascript">
   </script>
 <script src="assets/js/bootstrap.min.js" type="text/javascript">
@@ -192,7 +180,6 @@ echo $display ?>
   </script>
 <script src="assets/js/fileinput.js">
   </script>
-
 </body>
 
 <!-- Mirrored from demo.graygrids.com/themes/classix-template/post-ads.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 Nov 2017 11:40:57 GMT -->

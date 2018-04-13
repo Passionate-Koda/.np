@@ -1,9 +1,17 @@
 <?php
 ob_start();
 session_start();
-include("include/link_include.php");
 include("include/authentication.php");
+include("include/link_include.php");
 include("include/levelcheck.php");
+$level = adminLevel($conn, $_SESSION['id']);
+
+// if($level <= 1){
+//   $success = "You only Have Access to that page yet";
+//   $succ = preg_replace('/\s+/', '_', $success);
+//   header("Location: adminHome?wn=$succ");
+// }
+
 authenticate();
 if(isset($_SESSION['id'])){
   $session = $_SESSION['id'];
@@ -31,10 +39,9 @@ if(array_key_exists('submit', $_POST)){
     $error['title']="Enter a Title";
   }
 
-  if(empty($_POST['link'])){
-    $error['link']="Enter a Link";
+  if(empty($_POST['author'])){
+    $error['author']="Enter a Author";
   }
-
 
   if(empty($_POST['body'])){
     $error['body']="Enter a body";
@@ -42,12 +49,16 @@ if(array_key_exists('submit', $_POST)){
   if(empty($_POST['visibility'])){
     $error['visibility']="Enter a Visibility";
   }
+  if(empty($_POST['campus'])){
+    $error['campus']="Enter a Campus";
+  }
 
   if(empty($error)){
     $ver['a'] = compressImage($_FILES,'upload',50, 'uploads/' );
 
     $clean = array_map('trim', $_POST);
-    addNews($conn, $clean,$ver,$hash_id);
+    addCampusArticle($conn, $clean,$ver,$hash_id);
+    logs($conn, "added",$clean['title'],'Campus article for'.$clean['campus'],$hash_id);
   }
 }
  ?>
@@ -68,56 +79,59 @@ if(array_key_exists('submit', $_POST)){
   } ?>
 <div class="col-sm-12 col-md-10 col-md-offset-1">
 <div class="page-ads box">
-<h2 class="title-2">Welcome to the News page</h2>
+<h2 class="title-2">Welcome to the Article page</h2>
 <div class="row search-bar mb30 red-bg">
 <div class="advanced-search">
 <form class="search-form" method="get">
 <div class="col-md-4 col-sm-12 search-col">
-<h3>Please post your .</h3>
+<h3>Please post your article.</h3>
 </div>
 </form>
 </div>
 </div>
 <form class="form-ad" action="" method="post" enctype="multipart/form-data">
 <div class="form-group mb30">
-<label class="control-label">News Headline</label><?php $display = displayErrors($error, 'title');
-echo $display ?> <input class="form-control input-md" name="title" placeholder="Write a suitable headline"  type="text">
+<label class="control-label">Article Title</label><?php $display = displayErrors($error, 'title');
+echo $display ?> <input class="form-control input-md" name="title" placeholder="Write a suitable title for your article"  type="text">
 </div>
 <div class="form-group mb30">
-<label class="control-label">Author</label><?php $display = displayErrors($error, 'author');
-echo $display ?> <input class="form-control input-md" name="link" placeholder="Enter News Author here"  type="text">
-</div>
-<div class="col-md-4 col-sm-4 col-xs-12 search-bar search-bar-nostyle">
-<div class="input-group-addon search-category-container">
+<label class="control-label">Author Name</label><?php $display = displayErrors($error, 'author');
+echo $display ?> <input class="form-control input-md" name="author" placeholder="Enter your fullname here"  type="text">
 
-<label class="control-labell">News Category </label>  <?php $display = displayErrors($error, 'visibility');
-echo $display ?><br><select class="dropdown-product selectpicker" name="category" required>
-<option value="">
---Select--
-</option>
-<?php getNewsCateg($conn) ?>
-</select>
-</div>
-</div>
-<br>
-<br>
-<br>
 <div class="form-group mb30">
 <label class="control-label" for="textarea">Body</label>
 <?php $display = displayErrors($error, 'body');
 echo $display ?>
-<textarea class="form-control"  id="editor" name="body" placeholder="Write your article here" rows="4"></textarea>
+<textarea class="form-control" id="editor" name="body" placeholder="Write your article here" rows="4"></textarea>
 </div>
 
   <br/>
   <div class="col-md-4 col-sm-4 col-xs-12 search-bar search-bar-nostyle">
+  <div class="input-group-addon search-category-container">
+
+  <label class="control-labell">News Campus </label>  <?php $display = displayErrors($error, 'visibility');
+  echo $display ?><br><select class="dropdown-product selectpicker" name="campus" required>
+  <option value="">
+  --Select--
+  </option>
+  <?php getCampus($conn) ?>
+  </select>
+  </div>
+  </div>
+  <br>
+  <br>
+  <br>
+
+  <div class="col-md-4 col-sm-4 col-xs-12 search-bar search-bar-nostyle">
 <div class="input-group-addon search-category-container">
 
 <label class="control-labell">VISIBILITY </label>  <?php $display = displayErrors($error, 'visibility');
-  echo $display ?><br><select class="dropdown-product selectpicker" name="visibility">
-<option value="hide">
+  echo $display ?><br><select class="dropdown-product selectpicker" required name="visibility">
+<option value="">
 --Admin Decision--
 </option>
+
+
 </select>
 
 </div>

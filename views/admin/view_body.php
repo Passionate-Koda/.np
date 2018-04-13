@@ -58,6 +58,9 @@ $edit_info2 = getEditInfo2($conn,$_GET['id'],$_GET['t']);
   if($_GET['t'] == "about"){
   echo '<a href="manageAbout"> <button class="btn btn-common" type="submit">Back</button></a>';
 }
+  if($_GET['t'] == "campus_news"){
+  echo '<a href="manageCampusNews"> <button class="btn btn-common" type="submit">Back</button></a>';
+}
 
    ?>
    <br>
@@ -68,7 +71,7 @@ $edit_info2 = getEditInfo2($conn,$_GET['id'],$_GET['t']);
 
   <div class="blog-post single-post">
   <div class="">
-    <?php if($_GET['t'] == "news"){ ?>
+    <?php if($_GET['t'] == "news" || $_GET['t'] == "campus_news"){ ?>
   <h4 class="post-title"><a href="#"><?php echo $edit_info['headline'] ?></a></h4>
     <?php getBody($conn,$_GET['id'],$_GET['t']) ?>
 <?php }elseif($_GET['t'] ==  "event"){ ?>

@@ -47,7 +47,7 @@ if(array_key_exists('submit', $_POST)){
     $ver['a'] = compressImage($_FILES,'upload',50, 'uploads/' );
 
     $clean = array_map('trim', $_POST);
-    addNews($conn, $clean,$ver,$hash_id);
+    addCampusNews($conn, $clean,$ver,$hash_id);
   }
 }
  ?>
@@ -68,12 +68,12 @@ if(array_key_exists('submit', $_POST)){
   } ?>
 <div class="col-sm-12 col-md-10 col-md-offset-1">
 <div class="page-ads box">
-<h2 class="title-2">Welcome to the News page</h2>
+<h2 class="title-2">Welcome to the Campus News page</h2>
 <div class="row search-bar mb30 red-bg">
 <div class="advanced-search">
 <form class="search-form" method="get">
 <div class="col-md-4 col-sm-12 search-col">
-<h3>Please post your .</h3>
+<h3>Please post your News.</h3>
 </div>
 </form>
 </div>
@@ -90,12 +90,12 @@ echo $display ?> <input class="form-control input-md" name="link" placeholder="E
 <div class="col-md-4 col-sm-4 col-xs-12 search-bar search-bar-nostyle">
 <div class="input-group-addon search-category-container">
 
-<label class="control-labell">News Category </label>  <?php $display = displayErrors($error, 'visibility');
+<label class="control-labell">News Campus </label>  <?php $display = displayErrors($error, 'visibility');
 echo $display ?><br><select class="dropdown-product selectpicker" name="category" required>
 <option value="">
 --Select--
 </option>
-<?php getNewsCateg($conn) ?>
+<?php getCampus($conn) ?>
 </select>
 </div>
 </div>

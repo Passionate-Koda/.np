@@ -85,6 +85,8 @@
 <li><a href="manageReports">Manage Reports</a></li>
 <li><a href="manageGrants">Manage Grants</a></li>
 <li><a href="manageTrainings">Manage Training</a></li>
+<li><a href="manageCampusNews">Manage Campus News</a></li>
+<li><a href="manageCampusArticles">Manage Campus Articles</a></li>
 <li><a href="manageNews">Manage News</a></li>
 <li><a href="manageInsights">Manage Article</a></li>
   <li><a href="manageEvent">Manage Events</a></li>
@@ -99,17 +101,21 @@
   <!-- <li><a href="addProfile">Add Profile</a></li> -->
   <li><a href="addArticle">Add Article</a></li>
   <li><a href="addNews">Add News</a></li>
+  <li><a href="addCampusNews">Add Campus News</a></li>
   <li><a href="addInsight">Add Insight</a></li>
   <li><a href="addReport">Add Report</a></li>
   <li><a href="addGrant">Add Grant</a></li>
   <li><a href="addTraining">Add Training</a></li>
   <li><a href="addEvent">Add Event</a></li>
+  <li><a href="addCampusArticle">Add Campus Article</a></li>
   <!-- <li><a href="addResources">Add Resources</a></li> -->
   <li><a href="manageReports">Manage Reports</a></li>
   <li><a href="manageGrants">Manage Grants</a></li>
   <li><a href="manageTrainings">Manage Trainings</a></li>
   <li><a href="manageNews">Manage News</a></li>
+  <li><a href="manageCampusNews">Manage Campus News</a></li>
   <li><a href="manageArticles">Manage Articles</a></li>
+  <li><a href="manageManageArticles">Manage Campus Articles</a></li>
   <li><a href="manageInsights">Manage Insights</a></li>
   <li><a href="manageEvent">Manage Events</a></li>
 <?php $check2 = adminFullInfo($conn,$_SESSION['id']);
@@ -118,6 +124,7 @@ if($check2['portfolio'] == 555666777888999000){
 
   <li><a href="insightCategory">Add More Insights Category</a></li>
   <li><a href="newsCategory">Add More News Category</a></li>
+  <li><a href="campus">Add More Campus</a></li>
   <li><a href="addAbout">Add About Us</a></li>
   <li><a href="manageAbout">About Us</a></li>
   <li><a href="viewUsers">Manage Users</a></li>
