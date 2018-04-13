@@ -132,7 +132,7 @@ echo '<meta name="twitter:card" content="summary_large_image">
 						<div class="header-content">
 
 							<div class="header-content-logo">
-								<a href="#"><img src="images/logo3.jpg" data-ot-retina="images/logo@2x.png" alt="" /></a>
+								<a href="#"><img src="images/logo3.jpg"  alt="" /></a>
 							</div>
 
 							<div class="header-content-o">
@@ -148,23 +148,17 @@ echo '<meta name="twitter:card" content="summary_large_image">
 									</li>
 
 									<li><a href="about">About</a></li>
-									<li><a href="insight"><span>Insights</span></a>
+									<li><a href="insight"><span>Features</span></a>
 										<ul class="sub-menu">
-											<li><a href="#">Topic</a>
+											<li><a href="#">Witness Report</a></li>
+											<li><a href="#">Articles</a></li>
+											<li><a href="#">Insights</a>
 												<ul class="sub-menu">
-													<li><a href="report">Reports</a></li></li>
-													<li><a href="articles">Articles</a></li>
-													<li><a href="#">Resources</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Region</a>
-												<ul class="sub-menu">
-													<li><a href="#">North Africa</a></li>
-													<li><a href="#">South Africa</a></li>
-													<li><a href="#">East Africa</a></li>
-													<li><a href="#">West Africa</a></li>
-												</ul>
-											</li>
+													<li><a href="report">Tech</a></li>
+													<li><a href="articles">Fashion</a></li>
+												</ul></li>
+
+
 										</ul>
 									</li>
 									<li><a href="#"><span>Latest</span></a>
@@ -262,18 +256,39 @@ echo '<meta name="twitter:card" content="summary_large_image">
 									</li>
 									<li><a href="#"><span>News</span></a>
 										<ul class="sub-menu">
-											<li><a href="africa">Africa</a></li>
 											<li><a href="global">Global</a></li>
+											<li><a href="africa">Africa</a></li>
+
+											<li><a href="global">Nigeria</a></li>
 										</ul>
 									</li>
 									<li><a href="#"><span>Opportunities</span></a>
 										<ul class="sub-menu">
-											<li><a href="grants">Grants</a></li>
-											<li><a href="trainings">Trainings/Webinars</a></li>
+											<li><a href="grants">Trainings</a></li>
+											<li><a href="trainings">Events</a></li>
 										</ul>
 									</li>
 									<!-- <li><a href="team">Our Team</a></li> -->
-									<li><a href="archive">Directory</a></li>
+									<li><a href="archive">Report Event</a></li>
+									<li><a href="insight"><span>Campus</span></a>
+										<ul class="sub-menu">
+											<li><a href="#">News</a>
+												<ul class="sub-menu">
+													<li><a href="report">Eksu</a></li>
+													<li><a href="articles">OAU</a></li>
+													<li><a href="#">FUTA</a></li>
+												</ul>
+											</li>
+
+											<li><a href="#">Articles</a>
+												<ul class="sub-menu">
+													<li><a href="#">EKSU</a></li>
+													<li><a href="#">OAU</a></li>
+													<li><a href="#">FUTA</a></li>
+												</ul>
+											</li>
+										</ul>
+									</li>
 									<li><a href="contact">Contact us</a></li>
 								</ul>
 							</nav>

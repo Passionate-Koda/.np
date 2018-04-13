@@ -1,6 +1,6 @@
 <?php
 ob_start();
-$page_title = "Insight - Philanthropy Circuit";
+$page_title = "Insight - New.Mckodev";
 $page_name = "insight_post";
 include("include/header.php");
 
@@ -59,7 +59,7 @@ $SDate = decodeDate($date_created);
                    </div>
                    <div class="composs-main-article-meta">
                      <span class="item"><i class="material-icons">access_time</i><?php echo $SDate ?></span>
-                     <a href="#comments" class="item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://philanthropycircuit.com/insight?id=<?php echo $_GET['id'] ?>"></fb:comments-count> Comments</a>
+                     <a href="#comments" class="item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://news.mckodev.com.ng/insight?id=<?php echo $_GET['id'] ?>"></fb:comments-count> Comments</a>
                      <span class="item"><i class="fa fa-folder"></i><?php echo $category ?></span>
                      <span class="item"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
 <script type="IN/Share" data-url="http://philanthropycircuit/insight?id=<?php echo $_GET['id'] ?>"></script></span>
@@ -69,7 +69,7 @@ $SDate = decodeDate($date_created);
   data-size="small">
 Tweet</a></span>
 
-<span class="item"><div class="fb-share-button" data-href="http://philanthropycircuit.com/insight?id=<?php echo $_GET['id'] ?>" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://philanthropycircuit.com/insight?id=<?php echo $_GET['id'] ?>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a> </div></span>
+<span class="item"><div class="fb-share-button" data-href="http://news.mckodev.com.ng/insight?id=<?php echo $_GET['id'] ?>" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://news.mckodev.com.ng/insight?id=<?php echo $_GET['id'] ?>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a> </div></span>
 
                    </div>
 
@@ -88,7 +88,7 @@ Tweet</a></span>
 
 
                </div>
-               <div class="fb-comments" data-mobile="true" data-href="http://philanthropycircuit.com/insight?id=<?php echo $_GET['id'] ?>" data-width="700px" data-numposts="10"></div>
+               <div class="fb-comments" data-mobile="true" data-href="http://news.mckodev.com.ng/insight?id=<?php echo $_GET['id'] ?>" data-width="700px" data-numposts="10"></div>
 
              </div>
 

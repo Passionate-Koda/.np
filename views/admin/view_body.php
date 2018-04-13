@@ -27,7 +27,7 @@ $edit_info2 = getEditInfo2($conn,$_GET['id'],$_GET['t']);
   <div class="inner-box posting">
   <div class="alert alert-success alert-lg" role="alert">
   <h2 class="postin-title">✔ Successful! '.$msg.' </h2>
-  <p>Thank you '.ucwords($firstname).', Philanthrophy Circuit is happy to have you around. </p>
+  <p>Thank you '.ucwords($firstname).', Mckodev is happy to have you around. </p>
   </div>
   </div>
   </div>';

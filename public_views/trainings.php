@@ -1,5 +1,5 @@
 <?php
-$page_title = "Trainings - Philanthropy Circuit";
+$page_title = "Trainings - New.Mckodev";
 $page_name = "training";
 include("include/header2.php");
 

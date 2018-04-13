@@ -547,12 +547,12 @@ $suc = 'Registration Successful';
 
 
  function getPackageName($dbconn){
-   $stmt = $dbconn->prepare("SELECT package_name FROM package_name");
-
+   $stmt = $dbconn->prepare("SELECT * FROM package_name");
    $stmt->execute();
    while($row = $stmt->fetch(PDO::FETCH_BOTH)){
      extract($row);
-     echo '<option value="'.$package_name.'">
+
+     echo '<option value="'.$hash_id.'">
      '.$package_name.'
      </option>';
    }
@@ -1650,7 +1650,7 @@ function getAbout($dbconn,$get){
    $stmt->execute();
    while($row = $stmt->fetch(PDO::FETCH_BOTH)){
      extract($row);
-     echo '<option value="'.$news_category.'">
+     echo '<option value="'.$hash_id.'">
      '.$news_category.'
      </option>';
    }

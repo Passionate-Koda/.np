@@ -1,6 +1,6 @@
 <?php
 session_start();
-$page_title = "Articles - Philanthropy Circuit";
+$page_title = "Articles - New.Mckodev";
 $page_name = "article";
 include("include/check.php");
 include("include/header.php");

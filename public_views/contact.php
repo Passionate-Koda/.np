@@ -1,5 +1,5 @@
 <?php
-$page_title = "Contact - Philanthropy Circuit";
+$page_title = "Contact - New.Mckodev";
 $page_name = "contact";
 include("include/header.php");
  ?>
@@ -25,9 +25,9 @@ include("include/header.php");
  								<div class="composs-panel-inner">
  									<div class="map-block">
  										<div class="map-block-header">
- 											<h3>Philanthropy Circuit </h3>
+ 											<h3>New.Mckodev </h3>
  											<div class="paragraph-row">
- 												
+
  												<div class="column4">
  													<ul>
  														<li><i class="material-icons">phone</i>+2348030000000</li>

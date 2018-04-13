@@ -93,7 +93,6 @@
 <!-- <li><a href="addFaq">Add FAQ</a></li> -->
 <li> <a href="logout">Logout</a></li>
 <?php }else{ ?>
-
   <li><a href="admin">Home</a></li>
   <li><a href="manageViews">Manage Views</a></li>
   <!-- <li><a href="adminRegistration">Add Admin</a></li> -->
@@ -105,7 +104,6 @@
   <li><a href="addGrant">Add Grant</a></li>
   <li><a href="addTraining">Add Training</a></li>
   <li><a href="addEvent">Add Event</a></li>
-
   <!-- <li><a href="addResources">Add Resources</a></li> -->
   <li><a href="manageReports">Manage Reports</a></li>
   <li><a href="manageGrants">Manage Grants</a></li>
@@ -114,21 +112,17 @@
   <li><a href="manageArticles">Manage Articles</a></li>
   <li><a href="manageInsights">Manage Insights</a></li>
   <li><a href="manageEvent">Manage Events</a></li>
-
-
-
 <?php $check2 = adminFullInfo($conn,$_SESSION['id']);
 if($check2['portfolio'] == 555666777888999000){
 ?>
+
+  <li><a href="insightCategory">Add More Insights Category</a></li>
+  <li><a href="newsCategory">Add More News Category</a></li>
   <li><a href="addAbout">Add About Us</a></li>
   <li><a href="manageAbout">About Us</a></li>
   <li><a href="viewUsers">Manage Users</a></li>
 <?php } ?>
-  <!-- <li><a href="insightCategory">Create Insight Category</a></li> -->
-  <!-- <li><a href="newsCategory">Create News Category</a></li> -->
-  <!-- <li><a href="addFaq">Add FAQ</a></li> -->
   <li> <a href="logout">Logout</a></li>
-
 <?php } ?>
 </ul>
 </div>

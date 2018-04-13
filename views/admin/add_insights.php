@@ -63,7 +63,7 @@ if(array_key_exists('submit', $_POST)){
   <div class="inner-box posting">
   <div class="alert alert-success alert-lg" role="alert">
   <h2 class="postin-title">✔ Successful! '.$msg.' </h2>
-  <p>Thank you '.ucwords($firstname).', Philanthrophy Circuit is happy to have you around. </p>
+  <p>Thank you '.ucwords($firstname).', Mckodev  is happy to have you around. </p>
   </div>
   </div>
   </div>';
@@ -100,16 +100,11 @@ echo $display ?>
 <div class="input-group-addon search-category-container">
 
 <label class="control-labell">VISIBILITY </label>  <?php $display = displayErrors($error, 'visibility');
-  echo $display ?><br><select class="dropdown-product selectpicker" name="visibility">
-<option value="">
---Select--
-</option>
-<option value="show">
-Show
-</option>
+  echo $display ?><br><select class="dropdown-product selectpicker" name="visibility" >
 <option value="hide">
-Hide
+--Admin Decision--
 </option>
+
 
 </select>
 <br>
@@ -118,20 +113,12 @@ Hide
 
 
 <label class="control-labell">CATEGORY </label>  <?php $display = displayErrors($error, 'category');
-  echo $display ?><br><select required class="dropdown-product selectpicker" name="category">
+  echo $display ?><br><select required class="selectpicker" name="category">
 <option value="">
 --Select--
 </option>
-<option value="general">
-General
-</option>
-<option value="insight">
-Insight
-</option>
-<option value="sponsored">
-Sponsored
-</option>
 
+<?php getPackageName($conn); ?>
 </select>
 
 

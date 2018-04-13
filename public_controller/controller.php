@@ -201,7 +201,7 @@ function getPaginatedInsight($dbconn,$fs,$pp){
     <h2><a href="insight?id='.$hash_id.'">'.$title.'</a></h2>
     <span class="item-meta">
     <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
-    <a href="insight?id='.$hash_id.'" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://philanthropycircuit.com/insight?id='.$hash_id.'"></fb:comments-count></a>
+    <a href="insight?id='.$hash_id.'" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://news.mckodev.com.ng/insight?id='.$hash_id.'"></fb:comments-count></a>
     </span>
     <p>'.$bd.'...</p>
     </div>
@@ -227,7 +227,7 @@ function getPaginatedArticle($dbconn,$fs,$pp){
     <h2><a href="article?id='.$hash_id.'">'.$title.'</a></h2>
     <span class="item-meta">
     <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
-    <a href="insight?id='.$hash_id.'" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://philanthropycircuit.com/article?id='.$hash_id.'"></fb:comments-count></a>
+    <a href="insight?id='.$hash_id.'" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://news.mckodev.com.ng/article?id='.$hash_id.'"></fb:comments-count></a>
     </span>
     <p>'.$bd.'...</p>
     </div>
@@ -492,7 +492,6 @@ function setUserLogout($dbconn,$id){
   $stmt->bindParam(":lg",$lg);
   $stmt->execute();
 
-"SELECT * FROM CITY WHERE ID IN "
 }
 
 

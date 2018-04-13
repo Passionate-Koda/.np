@@ -79,7 +79,7 @@ $msg = str_replace('_', ' ', $_GET['success']);
 <div class="inner-box posting">
 <div class="alert alert-success alert-lg" role="alert">
 <h2 class="postin-title">✔ Successful! '.$msg.' </h2>
-<p>Thank you '.ucwords($firstname).', Philanthrophy Circuit is happy to have you around. </p>
+<p>Thank you '.ucwords($firstname).', Mckodev  is happy to have you around. </p>
 </div>
 </div>
 </div>';
@@ -187,7 +187,7 @@ echo $display ?>
 <div class="inner-box posting">
 <div class="alert alert-success alert-lg" role="alert">
 <h2 class="postin-title"><?php echo '✔ Hey! '.ucwords($firstname).', you can only upload your status once. Except granted such access again by the Master admin'; ?> </h2>
-<p><?php echo ' '.ucwords($firstname).', Philanthrophy Circuit has not given you such access yet, Ask for it if you need to update your status. They don\'t bite.'; ?> </p>
+<p><?php echo ' '.ucwords($firstname).', Mckodev  has not given you such access yet, Ask for it if you need to update your status. They don\'t bite.'; ?> </p>
 </div>
 </div>
 </div>';

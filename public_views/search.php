@@ -1,6 +1,6 @@
 <?php
 ob_start();
-$page_title = "Grants - Philanthropy Circuit";
+$page_title = "Grants - New.Mckodev";
 $page_name = "grant";
 include("include/header.php");
 

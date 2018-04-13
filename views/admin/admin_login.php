@@ -1,4 +1,4 @@
-<?php
+Mckodev<?php
 ob_start();
 session_start();
 
@@ -31,8 +31,8 @@ if(array_key_exists('submit', $_POST)){
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="author" content="Philanthrophy Circuit">
-<title>Philanthrophy Circuit Admin - Quality and Professional Websites Development</title>
+<meta name="author" content="Mckodev">
+<title>Mckodev Admin - Quality and Professional Websites Development</title>
 
 <link rel="shortcut icon" href="assets/img/favicon.png">
 
@@ -98,7 +98,7 @@ $msg = str_replace('_', ' ', $_GET['wn']);
 <div class="inner-box posting">
 <div class="alert alert-warning alert-lg" role="alert">
 <h2 class="postin-title">Warning! '.$msg.' </h2>
-<p>Philanthrophy Circuit will verify your account once you are confirmed as a Philanthrophy Circuit Admin. You will be Notified via mail. Thanks</p>
+<p>Mckodev will verify your account once you are confirmed as a Mckodev Admin. You will be Notified via mail. Thanks</p>
 </div>
 </div>
 </div>';
@@ -110,7 +110,7 @@ $msg = str_replace('_', ' ', $_GET['sgn']);
 <div class="inner-box posting">
 <div class="alert alert-warning alert-lg" role="alert">
 <h2 class="postin-title">Warning! '.$msg.' </h2>
-<p>Philanthrophy Circuit admin pages cannot be accessed without signin. Thanks</p>
+<p>Mckodev admin pages cannot be accessed without signin. Thanks</p>
 </div>
 </div>
 </div>';
@@ -122,7 +122,7 @@ $msg = str_replace('_', ' ', $_GET['ssp']);
 <div class="inner-box posting">
 <div class="alert alert-warning alert-lg" role="alert">
 <h2 class="postin-title">Warning! '.$msg.' </h2>
-<p>Contact Philanthrophy Circuit Admin. Thanks</p>
+<p>Contact Mckodev Admin. Thanks</p>
 </div>
 </div>
 </div>';

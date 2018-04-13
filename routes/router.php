@@ -249,7 +249,7 @@ switch ($uri[1]) {
   break;
 
   case "newsCategory":
-  include APP_PATH."/views/admin/add_news.php";
+  include APP_PATH."/views/admin/add_news_category.php";
   break;
 
   case "newsCategory?success=$success":

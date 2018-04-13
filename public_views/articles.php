@@ -1,5 +1,5 @@
 <?php
-$page_title = "Articles - Philanthropy Circuit";
+$page_title = "Articles - New.Mckodev";
 $page_name = "article";
 include("include/header.php");
 
