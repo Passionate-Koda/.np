@@ -148,14 +148,13 @@ echo '<meta name="twitter:card" content="summary_large_image">
 									</li>
 
 									<li><a href="about">About</a></li>
-									<li><a href="insight"><span>Features</span></a>
+									<li><a href="feature"><span>Features</span></a>
 										<ul class="sub-menu">
 											<li><a href="#">Witness Report</a></li>
 											<li><a href="#">Articles</a></li>
-											<li><a href="#">Insights</a>
+											<li><a href="#">insignts</a>
 												<ul class="sub-menu">
-													<li><a href="report">Tech</a></li>
-													<li><a href="articles">Fashion</a></li>
+												<?php fetchFeatureLink($conn,'insights') ?>
 												</ul></li>
 
 
@@ -270,21 +269,17 @@ echo '<meta name="twitter:card" content="summary_large_image">
 									</li>
 									<!-- <li><a href="team">Our Team</a></li> -->
 									<li><a href="archive">Report Event</a></li>
-									<li><a href="insight"><span>Campus</span></a>
+									<li><a href="campus"><span>Campus</span></a>
 										<ul class="sub-menu">
 											<li><a href="#">News</a>
 												<ul class="sub-menu">
-													<li><a href="report">Eksu</a></li>
-													<li><a href="articles">OAU</a></li>
-													<li><a href="#">FUTA</a></li>
+													<?php fetchCampusLink($conn,'campus_news','news') ?>
 												</ul>
 											</li>
 
 											<li><a href="#">Articles</a>
 												<ul class="sub-menu">
-													<li><a href="#">EKSU</a></li>
-													<li><a href="#">OAU</a></li>
-													<li><a href="#">FUTA</a></li>
+													<?php fetchCampusLink($conn,'campus_articles','article') ?>
 												</ul>
 											</li>
 										</ul>

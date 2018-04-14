@@ -1,3 +1,17 @@
+<?php
+ob_start();
+$read = adminFullInfo($conn,$_SESSION['id']);
+if($read['defaulted'] >= 3){
+  setLogout($conn,$_SESSION['id']);
+  session_destroy();
+  $success = "Your Account has Been Suspended";
+  $succ = preg_replace('/\s+/', '_', $success);
+  header("Location: adminLogin?ssp=$succ");
+}
+
+ ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

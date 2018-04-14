@@ -189,7 +189,7 @@ include("include/header.php");
 
 <!-- BEGIN .widget -->
 <div class="widget">
-  <h3>UPCOMING PHILANTROPHY EVENTS</h3>
+  <h3>UPCOMING EVENTS</h3>
   <div class="widget-content ot-w-comments-list">
 
     <?php getPreviewEvent($conn) ?>
