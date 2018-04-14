@@ -8,11 +8,13 @@
 					<ul>
 						<li><a href="insight">Insights</a></li>
 						<li><a href="articles">Articles</a></li>
-						<li><a href="report">Reports</a></li>
-						<li><a href="trainings">Trainings/Webinars</a></li>
-						<li><a href="grants">Grants</a></li>
-						<li><a href="africa">Africa Philantrophy News</a></li>
-						<li><a href="global">Global Philantrophy News</a></li>
+						<li><a href="articles">Campus Articles</a></li>
+						<li><a href="report">Witness Reports</a></li>
+						<li><a href="trainings">Programs</a></li>
+						<li><a href="grants">Training</a></li>
+						<li><a href="africa">Africa News</a></li>
+						<li><a href="global">Global News</a></li>
+						<li><a href="global">Nigeria News</a></li>
 					</ul>
 
 					<div class="footer-widgets lets-do-4">

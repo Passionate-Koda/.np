@@ -32,8 +32,8 @@ if(array_key_exists('submit', $_POST)){
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="author" content="Philanthrophy Circuit">
-<title>Philanthrophy Circuit Admin - Quality and Professional Websites Development</title>
+<meta name="author" content="">
+<title>Witness Login</title>
 
 <link rel="shortcut icon" href="assets/img/favicon.png">
 

@@ -8,6 +8,13 @@ if($check['level'] == 1 ){
   $stmt->bindParam(":pg", $urii[1]);
   $stmt->execute();
 
+  $cnt = $check['defaulted'] + 1;
+  $default = $conn->prepare("UPDATE admin SET defaulted=:lv WHERE hash_id=:hid");
+  $default->bindParam(":lv",$cnt);
+  $default->bindParam(":hid",$_SESSION['id']);
+  $default->execute();
+
+
   setLogout($conn,$_SESSION['id']);
   session_destroy();
   $success = "You have accessed a level your account is forbidden to access and You can be suspended for this, A notification has been sent to admin";

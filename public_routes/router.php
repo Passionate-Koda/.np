@@ -209,7 +209,7 @@ include APP_PATH."/public_views/index.php";
   include APP_PATH."/public_views/user_login.php";
   break;
 
-  case "insight":
+  case "feature":
   include APP_PATH."/public_views/insight.php";
   break;
 

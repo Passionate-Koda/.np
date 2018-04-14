@@ -325,13 +325,40 @@ function getPaginatedGrant($dbconn,$fs,$pp){
     <h2><a href="'.$link.'">'.$title.'</a></h2>
     <span class="item-meta">
     <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
-
     </span>
     <p>'.$bd.'</p>
     </div>
     </div>';
   }
 }
+
+function fetchCampusLink($dbconn,$categ,$tb){
+  $active = 1;
+  $stmt = $dbconn->prepare("SELECT * FROM campus WHERE $tb=:ac ORDER BY campus_name ASC");
+  $stmt->bindParam(":ac",$active);
+  $stmt->execute();
+    echo '<li><a href="'.$categ.'">General</a></li>';
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    extract($row);
+    echo '<li><a href="'.$categ.'?c='.$hash_id.'">'.$campus_name.'</a></li>';
+
+  }
+
+}
+function fetchFeatureLink($dbconn,$categ){
+
+  $stmt = $dbconn->prepare("SELECT * FROM package_name ORDER BY package_name ASC");
+
+  $stmt->execute();
+
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    extract($row);
+    echo '<li><a href="'.$categ.'?c='.$hash_id.'">'.$package_name.'</a></li>';
+  }
+
+}
+
+
 
 
 
@@ -600,7 +627,7 @@ function getReportHeader2($dbconn){
 
 }
 function getNewsHeader($dbconn,$rg){
-  $vis = "Show";
+  $vis = "show";
   $stmt = $dbconn->prepare("SELECT * FROM news WHERE visibility=:sh AND category=:rg ORDER BY id DESC LIMIT 2" );
   $stmt->bindParam(":sh", $vis);
   $stmt->bindParam(":rg", $rg);
@@ -625,9 +652,9 @@ function getNewsHeader($dbconn,$rg){
     echo'<span class="item-meta">
     <a href="africa" class="item-meta-item meta-button">View More News <i class="fa fa-caret-right"></i></a>
     </span>';
-  }else{
+  }elseif($rg == "Nigeria"){
     echo'<span class="item-meta">
-    <a href="global" class="item-meta-item meta-button">View More News <i class="fa fa-caret-right"></i></a>
+    <a href="nigeria" class="item-meta-item meta-button">View More News <i class="fa fa-caret-right"></i></a>
     </span>';
   }
 

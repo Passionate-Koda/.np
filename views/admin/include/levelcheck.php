@@ -11,10 +11,12 @@ if($check['user_status'] == 2 ){
 
 
 
+
+
 if($check = false ){
   unset($_SESSION['id']);
   session_destroy();
-  $success = "You don't have an account anymore";
+  $success = "You don't have an account";
   $succ = preg_replace('/\s+/', '_', $success);
   header("Location: adminLogin?wrn=$succ");
 }

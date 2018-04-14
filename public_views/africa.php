@@ -1,5 +1,5 @@
 <?php
-$page_title = "Africa Philanthropy News - New.Mckodev";
+$page_title = "Africa News - New.Mckodev";
 $page_name = "news";
 include("include/header.php");
 
@@ -19,7 +19,7 @@ include("include/header.php");
         <div class="composs-panel">
 
           <div class="composs-panel-title">
-            <strong>African Philanthropy News</strong>
+            <strong>African News</strong>
           </div>
 
           <div class="composs-panel-inner">
@@ -254,7 +254,7 @@ include("include/header.php");
         <!-- BEGIN .widget -->
 
         <div class="widget">
-          <h3>UPCOMING PHILANTROPHY EVENTS</h3>
+          <h3>UPCOMING EVENTS</h3>
           <div class="widget-content ot-w-comments-list">
 
             <?php getPreviewEvent($conn) ?>

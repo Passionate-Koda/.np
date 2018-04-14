@@ -1,6 +1,6 @@
 <?php
-$page_title = "Insights - New.Mckodev";
-$page_name = "insight";
+$page_title = "Features - New.Mckodev";
+$page_name = "Features";
 include("include/header.php");
 
 ?>
@@ -264,7 +264,7 @@ getPaginatedInsight($conn,$offset,$perPage) ?>
 
   <!-- BEGIN .widget -->
   <div class="widget">
-    <h3>UPCOMING PHILANTROPHY EVENTS</h3>
+    <h3>UPCOMING EVENTS</h3>
     <div class="widget-content ot-w-comments-list">
 
       <?php getPreviewEvent($conn) ?>
