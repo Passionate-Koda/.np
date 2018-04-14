@@ -50,7 +50,7 @@ $lname = ucwords($lastname);
 <div class="table-responsive">
 <table class="table table-striped table-bordered add-manage-table">
   <tr>
-    <th>Grant Info</th>
+    <th>Training Info</th>
     <th>Body</th>
     <th>Created By</th>
     <th>Date Uploaded</th>

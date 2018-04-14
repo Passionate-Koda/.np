@@ -4,6 +4,7 @@ session_start();
 include("include/link_include.php");
 include("include/authentication.php");
 include("include/levelcheck.php");
+include("include/level1_limit.php");
 authenticate();
 if(isset($_SESSION['id'])){
   $session = $_SESSION['id'];
@@ -90,7 +91,7 @@ echo $display ?> <input class="form-control input-md" name="link" placeholder="E
 <div class="col-md-4 col-sm-4 col-xs-12 search-bar search-bar-nostyle">
 <div class="input-group-addon search-category-container">
 
-<label class="control-labell">News Campus </label>  <?php $display = displayErrors($error, 'visibility');
+<label class="control-labell">CAMPUS</label>  <?php $display = displayErrors($error, 'visibility');
 echo $display ?><br><select class="dropdown-product selectpicker" name="category" required>
 <option value="">
 --Select--
@@ -114,7 +115,7 @@ echo $display ?>
 <div class="input-group-addon search-category-container">
 
 <label class="control-labell">VISIBILITY </label>  <?php $display = displayErrors($error, 'visibility');
-  echo $display ?><br><select class="dropdown-product selectpicker" name="visibility">
+  echo $display ?><br><select class="dropdown-product selectpicker" value="hide" name="visibility">
 <option value="hide">
 --Admin Decision--
 </option>

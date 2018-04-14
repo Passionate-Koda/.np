@@ -195,7 +195,7 @@ $suc = 'Registration Successful';
    $split = explode(" ",$post['title']);
    $id = $rnd.$split['0'];
    $hash_id = 'article'.str_shuffle($id);
-   $stmt = $dbconn->prepare("INSERT INTO blog VALUES(NULL, :tt,:au,:cm,:vis,:bd,:img1,:sess,NOW(),NOW(),:hsh)");
+   $stmt = $dbconn->prepare("INSERT INTO campus_article VALUES(NULL, :tt,:au,:cm,:vis,:bd,:img1,:sess,NOW(),NOW(),:hsh)");
    $data = [
      ':tt' => $post['title'],
      ':au' => $post['author'],
@@ -208,10 +208,10 @@ $suc = 'Registration Successful';
    ];
    $stmt->execute($data);
    logs($dbconn, 'added', $post['title'],'article',$sess);
-   $success = "Article Post Uploaded";
+   $success = "Campus Article Post Uploaded";
    $succ = preg_replace('/\s+/', '_', $success);
 
-   header("Location:/manageArticles?success=$succ");
+   header("Location:/manageCampusArticles?success=$succ");
  }
 
  function addInsight($dbconn,$post,$destn, $sess){
@@ -365,7 +365,7 @@ $suc = 'Registration Successful';
    $success = "Grant Post Uploaded";
    $succ = preg_replace('/\s+/', '_', $success);
 
-   header("Location:/manageGrants?success=$succ");
+   header("Location:/manageTrainings?success=$succ");
  }
 
  function addTraining($dbconn,$post,$sess){
@@ -387,7 +387,7 @@ $suc = 'Registration Successful';
    $success = "Training Post Uploaded";
    $succ = preg_replace('/\s+/', '_', $success);
 
-   header("Location:/manageTrainings?success=$succ");
+   header("Location:/managePrograms?success=$succ");
  }
 
 
@@ -667,6 +667,25 @@ $success = "edited Successfully";
 $succ = preg_replace('/\s+/', '_', $success);
 header("Location:/manageArticles?success=$succ");
 }
+function editCampusArticle($dbconn,$post,$gid){
+
+
+$stmt = $dbconn->prepare("UPDATE campus_article SET title=:tt, author=:au, body=:bd WHERE hash_id=:hid");
+$stmt->bindParam(":tt", $post['title']);
+$stmt->bindParam(":au", $post['author']);
+$stmt->bindParam(":bd", $post['body']);
+$stmt->bindParam(":hid", $gid);
+
+$stmt->execute();
+if(isset($_SESSION['id'])){
+  $sess = $_SESSION['id'];
+}
+logs($dbconn, 'edited', $post['title'],'Campus article',$sess);
+
+$success = "edited Successfully";
+$succ = preg_replace('/\s+/', '_', $success);
+header("Location:/manageCampusArticles?success=$succ");
+}
 function editEvent($dbconn,$post,$gid){
 $stmt = $dbconn->prepare("UPDATE event SET name=:tt, venue=:au, about=:bd, start_date=:sd, end_date=:ed WHERE hash_id=:hid");
 $stmt->bindParam(":tt", $post['name']);
@@ -751,13 +770,13 @@ logs($dbconn, 'edited', $post['title'],$tb,$sess);
 $success = "edited Successfully";
 $succ = preg_replace('/\s+/', '_', $success);
 if($tb == "grants"){
-header("location:manageGrants?success=$succ");
+header("location:manageTrainings?success=$succ");
 }
 if($tb == "report"){
 header("location:manageReports?success=$succ");
 }
 if($tb == "training"){
-header("location:manageTrainings?success=$succ");
+header("location:managePrograms?success=$succ");
 }
 
 
@@ -870,6 +889,179 @@ header("Location:/manageCampusNews?success=$succ");
    }
    return $string;
  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ function getCampusArticleView($dbconn,$get){
+   $stmt = $dbconn->prepare("SELECT * FROM campus_article ORDER BY id DESC");
+
+   $stmt->execute();
+   while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+     extract($row);
+         $bd = previewBody($body, 20);
+         $level =  adminLevel($dbconn,$get);
+
+         if($level == 3 || $level == "MASTER"){
+           echo '<tr><td class="ads-details-td">
+           <h4><a href="">'.$title.'</a></h4>
+           <p> <strong> Author </strong>:
+           '.$author.'</p>
+           <p> <strong> Campus </strong>:
+           '.$campus.'</p>
+           </td>
+           <td class="ads-details-td">
+           <a href="viewBody?id='.$hash_id.'&t=campus_article"><p>'.$bd.'...</p></a>
+           </td>
+           <td class="add-img-td">
+           <a href="editImage?id='.$hash_id.'&t=campus_article">
+           <img class="img-responsive" src="'.$image_1.'">
+           </a>
+           </td>
+           <td class="add-img-td">
+           '.$created_by.'
+           </td>
+           <td class="add-img-td">
+           '.$date_created.'
+           </td>
+           <td class="add-img-td">
+           '.$visibility.'
+           </td>
+           <td class="ads-details-td">
+             <a href="editCampusArticle?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
+           </td>
+
+           <td class="price-td">
+             <a href="deleteCampusArticle?id='.$hash_id.'">
+              <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+             </a>
+           </td>
+           <td class="price-td">
+             <a href="show?id='.$hash_id.'&t=campus_article">
+              <button class="btn btn-success btn-sm" type="submit">Show</button>
+             </a>
+             <a href="hide?id='.$hash_id.'&t=campus_article">
+              <button class="btn btn-basic btn-sm" type="submit">Hide</button>
+             </a>
+           </td></tr>';
+
+         }
+         if($level == 2 || $level == 4){
+           echo '<tr><td class="ads-details-td">
+           <h4><a href="">'.$title.'</a></h4>
+           <p> <strong> Author </strong>:
+           '.$author.'</p>
+           <p> <strong> Campus </strong>:
+           '.$campus.'</p>
+           </td>
+           <td class="ads-details-td">
+           <a href="viewBody?id='.$hash_id.'&t=campus_article"><p>'.$bd.'...</p></a>
+           </td>
+           <td class="add-img-td">
+           <a href="editImage?id='.$hash_id.'&t=campus_article">
+           <img class="img-responsive" src="'.$image_1.'">
+           </a>
+           </td>
+           <td class="add-img-td">
+           '.$created_by.'
+           </td>
+           <td class="add-img-td">
+           '.$date_created.'
+           </td>
+           <td class="add-img-td">
+           '.$visibility.'
+           </td>
+           <td class="ads-details-td">
+             <a href="editCampusArticle?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
+           </td>
+
+           <td class="price-td">
+                  <p>You cannnot perform this action</p>
+           </td>
+           <td class="price-td">
+             <p>You cannnot perform this action</p>
+           </td></tr>';
+
+         }
+         if($level == 1){
+           echo '<tr><td class="ads-details-td">
+           <h4><a href="">'.$title.'</a></h4>
+           <p> <strong> Author </strong>:
+           '.$author.'</p>
+           <p> <strong> Campus </strong>:
+           '.$campus.'</p>
+           </td>
+           <td class="ads-details-td">
+           <a href="viewBody?id='.$hash_id.'&t=campus_article"><p>'.$bd.'...</p></a>
+           </td>
+           <td class="add-img-td">
+           <a href="#">
+           <img class="img-responsive" src="'.$image_1.'">
+           </a>
+           </td>
+           <td class="add-img-td">
+           '.$created_by.'
+           </td>
+           <td class="add-img-td">
+           '.$date_created.'
+           </td>
+           <td class="add-img-td">
+           '.$visibility.'
+           </td>
+           <td class="ads-details-td">
+               <p>You cannnot perform this action</p>
+           </td>
+
+           <td class="price-td">
+                  <p>You cannnot perform this action</p>
+           </td>
+           <td class="price-td">
+             <p>You cannnot perform this action</p>
+           </td></tr>';
+
+         }
+
+
+
+
+
+
+   }
+
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
  function getNewsView($dbconn,$get){
@@ -1073,10 +1265,9 @@ header("Location:/manageCampusNews?success=$succ");
          <button class="btn btn-basic btn-sm" type="submit">Hide</button>
         </a>
       </td></tr>';
-
     }
 
-    if($level == 2){
+    if($level == 2 || $level == 4){
       echo '<tr><td class="ads-details-td>
       <h4><a href="'.$link.'">'.$headline.'</a></h4>
       <p> <strong> Author </strong>:
@@ -1965,13 +2156,13 @@ function getAbout($dbconn,$get){
    $succ = preg_replace('/\s+/', '_', $success);
 
    if($tb == "grants"){
-   header("location:manageGrants?success=$succ");
+   header("location:manageTrainings?success=$succ");
    }
    if($tb == "report"){
    header("location:manageReports?success=$succ");
    }
    if($tb == "training"){
-   header("location:manageTrainings?success=$succ");
+   header("location:managePrograms?success=$succ");
    }
 
  }

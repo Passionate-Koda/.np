@@ -3,7 +3,7 @@ ob_start();
 session_start();
 include("include/authentication.php");
 include("include/link_include.php");
-include("include/levelcheck.php");
+include("include/level1_limit.php");
 $level = adminLevel($conn, $_SESSION['id']);
 // if($level <= 1){
 //   $success = "You only Have Access to that page yet";

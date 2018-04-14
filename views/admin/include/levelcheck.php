@@ -9,6 +9,8 @@ if($check['user_status'] == 2 ){
   header("Location: adminLogin?ssp=$succ");
 }
 
+
+
 if($check = false ){
   unset($_SESSION['id']);
   session_destroy();
