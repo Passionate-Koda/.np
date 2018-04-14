@@ -6,6 +6,7 @@ include("include/authentication.php");
 include("include/levelcheck.php");
 include("include/student_limit.php");
 include("include/level1_limit.php");
+include("include/level2_limit.php");
 authenticate();
 if(isset($_SESSION['id'])){
   $session = $_SESSION['id'];
@@ -15,7 +16,7 @@ extract($info);
 $fname = ucwords($firstname);
 $lname = ucwords($lastname);
 
-
+$edit_info = getEditInfo($conn,$_GET['id'],'campus_article');
 
 
 
@@ -23,27 +24,13 @@ $lname = ucwords($lastname);
 
 $error= [];
 
-if(array_key_exists('submit', $_POST)){
-  if(empty($_POST['title'])){
-    $error['title']="Enter a Title";
-  }
+if(array_key_exists('yes', $_POST)){
+deleteArticle($conn,$edit_info['image_1'],$_GET['id']);
+logs($conn, 'deleted', $edit_info['title'],'Campus article',$hash_id);
+}
 
-  if(empty($_POST['link'])){
-    $error['link']="Enter a Link";
-  }
-
-  if(empty($_POST['body'])){
-    $error['body']="Enter a body";
-  }
-
-  if(empty($_POST['visibility'])){
-    $error['visibility']="Enter a Visibility";
-  }
-
-  if(empty($error)){
-    $clean = array_map('trim', $_POST);
-    addGrant($conn, $clean,$hash_id);
-  }
+if(array_key_exists('no', $_POST)){
+header("Location:manageCampusArticles");
 }
  ?>
 <section id="content">
@@ -56,91 +43,31 @@ if(array_key_exists('submit', $_POST)){
   <div class="inner-box posting">
   <div class="alert alert-success alert-lg" role="alert">
   <h2 class="postin-title">✔ Successful! '.$msg.' </h2>
-  <p>Thank you '.ucwords($firstname).', Mckodev  is happy to have you around. </p>
+  <p>Thank you '.ucwords($firstname).', Mckodev is happy to have you around. </p>
   </div>
   </div>
   </div>';
   } ?>
 <div class="col-sm-12 col-md-10 col-md-offset-1">
 <div class="page-ads box">
-<h2 class="title-2">Welcome to the Training page</h2>
-<div class="row search-bar mb30 red-bg">
+<h2 class="title-2">Are You Sure You Want to delete "<?php echo $edit_info['title'] ?>"</h2>
+<div class="row search-bar mb30">
 <div class="advanced-search">
-<form class="search-form" method="get">
-<div class="col-md-4 col-sm-12 search-col">
-<h3>Please post your Training.</h3>
 </div>
+</div>
+<form class="form-ad" action="" method="post">
+<input type="submit" class="btn btn-common" name="yes" value="Yes">
+<input type="submit" class="btn btn-danger" name="no" value="No">
 </form>
 </div>
 </div>
-<form class="form-ad" action="" method="post" enctype="multipart/form-data">
-<div class="form-group mb30">
-<label class="control-label">Training Title</label><?php $display = displayErrors($error, 'title');
-echo $display ?> <input class="form-control input-md" name="title" placeholder="Write a suitable title for Training"  type="text">
-</div>
-<div class="form-group mb30">
-<label class="control-label">Link</label><?php $display = displayErrors($error, 'link');
-echo $display ?> <input class="form-control input-md" name="link" placeholder="Training Link"  type="text">
-
-<div class="form-group mb30">
-<label class="control-label" for="textarea">Body</label>
-<?php $display = displayErrors($error, 'body');
-echo $display ?>
-<textarea class="form-control"  id="editor" name="body" placeholder="Write your Training Details here" rows="4"></textarea>
-</div>
-
-  <br/>
-  <div class="col-md-4 col-sm-4 col-xs-12 search-bar search-bar-nostyle">
-<div class="input-group-addon search-category-container">
-
-<label class="control-labell">VISIBILITY </label>  <?php $display = displayErrors($error, 'visibility');
-  echo $display ?><br><select class="dropdown-product selectpicker" required name="visibility">
-<option value="">
---Select--
-</option>
-<option value="show">
-Show
-</option>
-<option value="hide">
-Hide
-</option>
-
-</select>
-
 </div>
 </div>
-
-<br/>
-<br/>
-<br/>
-
-<input type="submit" class="btn btn-common" name="submit" value="Add">
-</form>
-</div>
-</div>
-
-
-
-</div>
-</div>
-
 </section>
-
 <a class="back-to-top" href="#"><i class="fa fa-angle-up"></i></a>
 <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> -->
 
-
-<script>
-  ClassicEditor
-    .create( document.querySelector( '#editor' ) )
-    .then( editor => {
-      console.log( editor );
-    } )
-    .catch( error => {
-      console.error( error );
-    } );
-</script>
 <script src="assets/js/jquery-min.js" type="text/javascript">
   </script>
 <script src="assets/js/bootstrap.min.js" type="text/javascript">

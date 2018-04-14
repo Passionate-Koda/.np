@@ -4,9 +4,6 @@ session_start();
 include("include/link_include.php");
 include("include/authentication.php");
 include("include/levelcheck.php");
-include("include/student_limit.php");
-
-
 authenticate();
 if(isset($_SESSION['id'])){
   $session = $_SESSION['id'];
@@ -48,20 +45,24 @@ $lname = ucwords($lastname);
 </div> -->
 <div class="col-sm-9 page-content" style="width:100%;overflow-x:scroll; ">
 
-<h2 class="title-2"><i class="fa fa-star-o"></i> Manage Content</h2>
+<h2 class="title-2"><i class="fa fa-star-o"></i> Manage Articles</h2>
 <br>
 <div class="table-responsive">
 <table class="table table-striped table-bordered add-manage-table">
   <tr>
-    <th>About Us</th>
+    <th>Article Info</th>
+    <th>Body</th>
+    <th>Image(Click to change)</th>
     <th>Created By</th>
-    <th>Last Editted By</th>
     <th>Date Uploaded</th>
+    <th>Visibility</th>
     <th>Edit</th>
+    <th>Delete</th>
+    <th>Set Visibility</th>
   </tr>
 <tbody>
 
-<?php getAbout($conn,$_SESSION['id']); ?>
+<?php getCampusArticleView($conn, $_SESSION['id']); ?>
 <!-- <td class="">
 <h4><a href="">Name</a></h4>
 <p> <strong> Link </strong>:

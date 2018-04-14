@@ -4,6 +4,9 @@ session_start();
 include("include/link_include.php");
 include("include/authentication.php");
 include("include/levelcheck.php");
+include("include/student_limit.php");
+include("include/level1_limit.php");
+include("include/level2_limit.php");
 authenticate();
 if(isset($_SESSION['id'])){
   $session = $_SESSION['id'];
@@ -73,6 +76,7 @@ if(array_key_exists("submit", $_POST)){
    <option value="1">1</option>
    <option value="2">2</option>
    <option value="3">3</option>
+   <option value="4">4</option>
 
    </select>
    <br/>

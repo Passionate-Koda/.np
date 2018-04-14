@@ -74,6 +74,9 @@ switch ($uri[1]) {
   case "addArticle":
   include APP_PATH."/views/admin/add_blog.php";
   break;
+  case "addCampusArticle":
+  include APP_PATH."/views/admin/add_campus_blog.php";
+  break;
 
   case "addInsight":
   include APP_PATH."/views/admin/add_insights.php";
@@ -82,11 +85,11 @@ switch ($uri[1]) {
   case "addReport":
   include APP_PATH."/views/admin/add_report.php";
   break;
-  case "addGrant":
+  case "addTraining":
   include APP_PATH."/views/admin/add_grants.php";
   break;
 
-  case "addTraining":
+  case "addProgram":
   include APP_PATH."/views/admin/add_trainings.php";
   break;
 
@@ -109,6 +112,9 @@ switch ($uri[1]) {
   case "addArticle?success=$success":
   include APP_PATH."/views/admin/add_blog.php";
   break;
+  case "addCampusArticle?success=$success":
+  include APP_PATH."/views/admin/add_campus_blog.php";
+  break;
 
   case "addInsight?success=$success":
   include APP_PATH."/views/admin/add_insights.php";
@@ -118,7 +124,7 @@ switch ($uri[1]) {
   include APP_PATH."/views/admin/add_news.php";
   break;
 
-  case "addGrant?success=$success":
+  case "addTraining?success=$success":
   include APP_PATH."/views/admin/add_grants.php";
   break;
 
@@ -130,7 +136,7 @@ switch ($uri[1]) {
   include APP_PATH."/views/admin/add_event.php";
   break;
 
-  case "addTraining?success=$success":
+  case "addProgram?success=$success":
   include APP_PATH."/views/admin/add_trainings.php";
   break;
 
@@ -201,6 +207,9 @@ switch ($uri[1]) {
   case "manageArticles":
   include APP_PATH."/views/admin/view_articles.php";
   break;
+  case "manageCampusArticles":
+  include APP_PATH."/views/admin/view_campus_articles.php";
+  break;
 
   case "manageInsights":
   include APP_PATH."/views/admin/view_insights.php";
@@ -228,6 +237,9 @@ switch ($uri[1]) {
 
   case "editArticle?id=$id":
   include APP_PATH."/views/admin/edit_article.php";
+  break;
+  case "editCampusArticle?id=$id":
+  include APP_PATH."/views/admin/edit_campus_article.php";
   break;
 
   case "editAbout?id=$id":
@@ -353,6 +365,9 @@ switch ($uri[1]) {
   case "deleteArticle?id=$id":
   include APP_PATH."/views/admin/delete_article.php";
   break;
+  case "deleteCampusArticle?id=$id":
+  include APP_PATH."/views/admin/delete_campus_article.php";
+  break;
   case "deleteEvent?id=$id":
   include APP_PATH."/views/admin/delete_event.php";
   break;
@@ -370,6 +385,9 @@ switch ($uri[1]) {
 
   case "manageArticles?success=$success":
   include APP_PATH."/views/admin/view_articles.php";
+  break;
+  case "manageCampusArticles?success=$success":
+  include APP_PATH."/views/admin/view_campus_articles.php";
   break;
 
   case "manageAbout":
@@ -398,19 +416,19 @@ switch ($uri[1]) {
   include APP_PATH."/views/admin/manage_resources.php";
   break;
 
+  case "managePrograms?success=$success":
+  include APP_PATH."/views/admin/manage_trainings.php";
+  break;
+
+  case "managePrograms":
+  include APP_PATH."/views/admin/manage_trainings.php";
+  break;
+
   case "manageTrainings?success=$success":
-  include APP_PATH."/views/admin/manage_trainings.php";
-  break;
-
-  case "manageTrainings":
-  include APP_PATH."/views/admin/manage_trainings.php";
-  break;
-
-  case "manageGrants?success=$success":
   include APP_PATH."/views/admin/manage_grants.php";
   break;
 
-  case "manageGrants":
+  case "manageTrainings":
   include APP_PATH."/views/admin/manage_grants.php";
   break;
 

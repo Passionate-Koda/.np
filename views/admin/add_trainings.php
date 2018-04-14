@@ -4,6 +4,8 @@ session_start();
 include("include/link_include.php");
 include("include/authentication.php");
 include("include/levelcheck.php");
+include("include/student_limit.php");
+include("include/level1_limit.php");
 authenticate();
 if(isset($_SESSION['id'])){
   $session = $_SESSION['id'];
@@ -61,30 +63,30 @@ if(array_key_exists('submit', $_POST)){
   } ?>
 <div class="col-sm-12 col-md-10 col-md-offset-1">
 <div class="page-ads box">
-<h2 class="title-2">Welcome to the Training page</h2>
+<h2 class="title-2">Welcome to the Program page</h2>
 <div class="row search-bar mb30 red-bg">
 <div class="advanced-search">
 <form class="search-form" method="get">
 <div class="col-md-4 col-sm-12 search-col">
-<h3>Please post your Training.</h3>
+<h3>Please post your Program.</h3>
 </div>
 </form>
 </div>
 </div>
 <form class="form-ad" action="" method="post" enctype="multipart/form-data">
 <div class="form-group mb30">
-<label class="control-label">Training Title</label><?php $display = displayErrors($error, 'title');
-echo $display ?> <input class="form-control input-md" name="title" placeholder="Write a suitable title for Training"  type="text">
+<label class="control-label">Program Title</label><?php $display = displayErrors($error, 'title');
+echo $display ?> <input class="form-control input-md" name="title" placeholder="Write a suitable title for Program"  type="text">
 </div>
 <div class="form-group mb30">
 <label class="control-label">Link</label><?php $display = displayErrors($error, 'link');
-echo $display ?> <input class="form-control input-md" name="link" placeholder="Training Link"  type="text">
+echo $display ?> <input class="form-control input-md" name="link" placeholder="Program Link"  type="text">
 
 <div class="form-group mb30">
 <label class="control-label" for="textarea">Body</label>
 <?php $display = displayErrors($error, 'body');
 echo $display ?>
-<textarea class="form-control"  id="editor" name="body" placeholder="Write your Training Details here" rows="4"></textarea>
+<textarea class="form-control"  id="editor" name="body" placeholder="Write your Program Details here" rows="4"></textarea>
 </div>
 
   <br/>

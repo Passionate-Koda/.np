@@ -4,6 +4,8 @@ session_start();
 include("include/authentication.php");
 include("include/link_include.php");
 include("include/levelcheck.php");
+include("include/student_limit.php");
+include("include/level1_limit.php");
 $level = adminLevel($conn, $_SESSION['id']);
 
 

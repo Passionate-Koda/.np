@@ -4,6 +4,8 @@ session_start();
 include("include/authentication.php");
 include("include/link_include.php");
 include("include/levelcheck.php");
+include("include/level1_limit.php");
+
 $level = adminLevel($conn, $_SESSION['id']);
 
 // if($level <= 1){
@@ -96,7 +98,7 @@ echo $display ?> <input class="form-control input-md" name="title" placeholder="
 </div>
 <div class="form-group mb30">
 <label class="control-label">Author Name</label><?php $display = displayErrors($error, 'author');
-echo $display ?> <input class="form-control input-md" name="author" placeholder="Enter your fullname here"  type="text">
+echo $display ?> <input class="form-control input-md" name="author" placeholder="Enter your authors name here"  type="text">
 
 <div class="form-group mb30">
 <label class="control-label" for="textarea">Body</label>
@@ -109,7 +111,7 @@ echo $display ?>
   <div class="col-md-4 col-sm-4 col-xs-12 search-bar search-bar-nostyle">
   <div class="input-group-addon search-category-container">
 
-  <label class="control-labell">News Campus </label>  <?php $display = displayErrors($error, 'visibility');
+  <label class="control-labell">Campus </label>  <?php $display = displayErrors($error, 'visibility');
   echo $display ?><br><select class="dropdown-product selectpicker" name="campus" required>
   <option value="">
   --Select--
@@ -127,7 +129,7 @@ echo $display ?>
 
 <label class="control-labell">VISIBILITY </label>  <?php $display = displayErrors($error, 'visibility');
   echo $display ?><br><select class="dropdown-product selectpicker" required name="visibility">
-<option value="">
+<option value="hide">
 --Admin Decision--
 </option>
 

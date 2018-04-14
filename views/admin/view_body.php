@@ -44,13 +44,13 @@ $edit_info2 = getEditInfo2($conn,$_GET['id'],$_GET['t']);
   echo '<a href="manageNews"> <button class="btn btn-common" type="submit">Back</button></a>';
 }
   if($_GET['t'] == "grants"){
-  echo '<a href="manageGrants"> <button class="btn btn-common" type="submit">Back</button></a>';
+  echo '<a href="manageTrainings"> <button class="btn btn-common" type="submit">Back</button></a>';
 }
   if($_GET['t'] == "report"){
   echo '<a href="manageReports"> <button class="btn btn-common" type="submit">Back</button></a>';
 }
   if($_GET['t'] == "training"){
-  echo '<a href="manageTrainings"> <button class="btn btn-common" type="submit">Back</button></a>';
+  echo '<a href="managePrograms"> <button class="btn btn-common" type="submit">Back</button></a>';
 }
   if($_GET['t'] == "event"){
   echo '<a href="manageEvent"> <button class="btn btn-common" type="submit">Back</button></a>';
@@ -60,6 +60,9 @@ $edit_info2 = getEditInfo2($conn,$_GET['id'],$_GET['t']);
 }
   if($_GET['t'] == "campus_news"){
   echo '<a href="manageCampusNews"> <button class="btn btn-common" type="submit">Back</button></a>';
+}
+  if($_GET['t'] == "campus_article"){
+  echo '<a href="manageCampusArticles"> <button class="btn btn-common" type="submit">Back</button></a>';
 }
 
    ?>

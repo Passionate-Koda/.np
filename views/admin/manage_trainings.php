@@ -4,6 +4,7 @@ session_start();
 include("include/link_include.php");
 include("include/authentication.php");
 include("include/levelcheck.php");
+include("include/student_limit.php");
 authenticate();
 if(isset($_SESSION['id'])){
   $session = $_SESSION['id'];
@@ -50,7 +51,7 @@ $lname = ucwords($lastname);
 <div class="table-responsive">
 <table class="table table-striped table-bordered add-manage-table">
   <tr>
-    <th>Grant Info</th>
+    <th>Program Info</th>
     <th>Body</th>
     <th>Created By</th>
     <th>Date Uploaded</th>

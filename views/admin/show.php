@@ -1,4 +1,7 @@
 <?php
+include("include/level1_limit.php");
+include("include/student_limit.php");
+include("include/level2_limit.php");
 $tb = $_GET['t'];
 $stmt = $conn->prepare("UPDATE $tb SET visibility=:vs WHERE hash_id=:gid");
 $show = "show";
@@ -15,7 +18,7 @@ if($tb == "news"){
 header("location:manageNews");
 }
 if($tb == "grants"){
-header("location:manageGrants");
+header("location:manageTrainings");
 }
 if($tb == "report"){
 header("location:manageReports");
@@ -28,6 +31,9 @@ header("location:manageInsights");
 }
 if($tb == "campus_news"){
 header("location:manageCampusNews");
+}
+if($tb == "campus_article"){
+header("location:manageCampusArticles");
 }
 // if($tb == ""){
 // header("location:manageTrainings");
