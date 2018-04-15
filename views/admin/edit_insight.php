@@ -83,20 +83,13 @@ if(array_key_exists('submit', $_POST)){
 echo $display ?> <input class="form-control input-md" name="title" placeholder="Write a suitable title for your article" value="<?php echo $edit_info['title']      ?>"  type="text">
 </div>
 <div class="form-group mb30">
-<label class="control-labell">CATEGORY </label>  <?php $display = displayErrors($error, 'category');
-  echo $display ?><br><select value="<?php echo $edit_info['category']; ?>" class="dropdown-product selectpicker" name="category" required>
+<label class="control-labell">CATEGORY (<?php $categ = getEntityCategoryAdmin($conn,'package_name','package_name',$edit_info['category']); echo $categ['package_name'];?>) </label>  <?php $display = displayErrors($error, 'category');
+  echo $display ?><br><select value="" class="dropdown-product selectpicker" name="category" required>
 <option value="">
 --Select--
 </option>
-<option value="general">
-General
-</option>
-<option value="insight">
-Insight
-</option>
-<option value="sponsored">
-Sponsored
-</option>
+<?php  getPackageName($conn); ?>
+
 
 </select>
 

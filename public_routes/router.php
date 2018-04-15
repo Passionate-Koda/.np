@@ -13,6 +13,7 @@ if(count($uri)> 2){
 //Creating A Null variable to be populated for the query String Route;
 $category_id = NULL;
 $category_name= NULL;
+$c= NULL;
 
 //Creating a $_GET condition to populate the Null Variables;
 if(isset($_GET['id'])){
@@ -22,6 +23,9 @@ if(isset($_GET['id'])){
 $msg = NULL;
 if(isset($_GET['msg'])){
   $msg = $_GET['msg'];
+}
+if(isset($_GET['c'])){
+  $c = $_GET['c'];
 }
 
 $vcid = NULL;
@@ -85,6 +89,10 @@ if(isset($_GET['s'])){
 
 
 
+
+
+
+
 switch ($uri[1]) {
 
 
@@ -103,15 +111,15 @@ include APP_PATH."/public_views/index.php";
   case "about":
   include APP_PATH."/public_views/about.php";
   break;
+  //
+  // case "news?id=$id":
+  // include APP_PATH."/public_views/africa.php";
+  // break;
 
-  case "news?id=$id":
-  include APP_PATH."/public_views/africa.php";
-  break;
 
-
-  case "news?id=$id":
-  include APP_PATH."/public_views/global.php";
-  break;
+  // case "news?id=$id":
+  // include APP_PATH."/public_views/global.php";
+  // break;
 
   case "articles":
   include APP_PATH."/public_views/articles.php";
@@ -137,7 +145,7 @@ include APP_PATH."/public_views/index.php";
   include APP_PATH."/public_views/contact.php";
   break;
 
-  case "grants?id=$id":
+  case "training?id=$id":
   include APP_PATH."/public_views/grants.php";
   break;
 
@@ -157,11 +165,11 @@ include APP_PATH."/public_views/index.php";
   include APP_PATH."/public_views/team.php";
   break;
 
-  case "grants":
+  case "training":
   include APP_PATH."/public_views/grants.php";
   break;
 
-  case "trainings":
+  case "program":
   include APP_PATH."/public_views/trainings.php";
   break;
 
@@ -209,8 +217,28 @@ include APP_PATH."/public_views/index.php";
   include APP_PATH."/public_views/user_login.php";
   break;
 
-  case "feature":
+  case "insight":
   include APP_PATH."/public_views/insight.php";
+  break;
+
+  case "insights?c=$c":
+  include APP_PATH."/public_views/insight_category.php";
+  break;
+
+  case "insights?p=$p":
+  include APP_PATH."/public_views/insight_category.php";
+  break;
+
+  case "news":
+  include APP_PATH."/public_views/news.php";
+  break;
+
+  case "news?id=$id":
+  include APP_PATH."/public_views/news_post.php";
+  break;
+
+  case "news?c=$c":
+  include APP_PATH."/public_views/news_category.php";
   break;
 
   case "u_verify?vcid=$vcid":

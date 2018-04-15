@@ -1,12 +1,12 @@
 <?php
 ob_start();
-$page_title = "Insight - New.Mckodev";
-$page_name = "insight_post";
+$page_title = "News - New.Mckodev";
+$page_name = "news_post";
 include("include/header.php");
 
 
 
-$stmt = $conn->prepare("SELECT * FROM insight WHERE hash_id =:idd");
+$stmt = $conn->prepare("SELECT * FROM news WHERE hash_id =:idd");
 $stmt->bindParam(":idd", $_GET['id']);
 // $stmt->bindParam(":bk", $pp);
 $stmt->execute();
@@ -51,7 +51,7 @@ $SDate = decodeDate($date_created);
 
                <div class="composs-main-article-content">
 
-                 <h1><?php echo $title ?></h1>
+                 <h1><?php echo $headline ?></h1>
 
                  <div class="composs-main-article-head">
                    <div class="composs-main-article-media" style="background:url('<?php echo $image_1 ?>') no-repeat center; background-size: cover; height: 70vh; width: 100%">
@@ -59,17 +59,17 @@ $SDate = decodeDate($date_created);
                    </div>
                    <div class="composs-main-article-meta">
                      <span class="item"><i class="material-icons">access_time</i><?php echo $SDate ?></span>
-                     <a href="#comments" class="item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://news.mckodev.com.ng/insight?id=<?php echo $_GET['id'] ?>"></fb:comments-count> Comments</a>
-                     <span class="item"><i class="fa fa-folder"></i><?php $categ = getEntityCategory($conn,'package_name','package_name',$category); echo $categ['package_name'];?></span>
+                     <a href="#comments" class="item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://news.mckodev.com.ng/news?id=<?php echo $_GET['id'] ?>"></fb:comments-count> Comments</a>
+                     <span class="item"><i class="fa fa-folder"></i><?php $categ = getEntityCategory($conn,'news_category','news_category',$category); echo $categ['news_category'];?></span>
                      <span class="item"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
-<script type="IN/Share" data-url="http://philanthropycircuit/insight?id=<?php echo $_GET['id'] ?>"></script></span>
+<script type="IN/Share" data-url="http://philanthropycircuit/news?id=<?php echo $_GET['id'] ?>"></script></span>
 
  <span class="item"><a class="twitter-share-button"
   href="https://twitter.com/intent/tweet"
   data-size="small">
 Tweet</a></span>
 
-<span style="display:block;" class="item"><div class="fb-share-button" data-href="http://news.mckodev.com.ng/insight?id=<?php echo $_GET['id'] ?>" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://news.mckodev.com.ng/insight?id=<?php echo $_GET['id'] ?>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a> </div></span>
+<span style="display:block;" class="item"><div class="fb-share-button" data-href="http://news.mckodev.com.ng/news?id=<?php echo $_GET['id'] ?>" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://news.mckodev.com.ng/news?id=<?php echo $_GET['id'] ?>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a> </div></span>
 
                    </div>
 
@@ -88,7 +88,7 @@ Tweet</a></span>
 
 
                </div>
-               <div class="fb-comments" data-mobile="true" data-href="http://news.mckodev.com.ng/insight?id=<?php echo $_GET['id'] ?>" data-width="700px" data-numposts="10"></div>
+               <div class="fb-comments" data-mobile="true" data-href="http://news.mckodev.com.ng/news?id=<?php echo $_GET['id'] ?>" data-width="700px" data-numposts="10"></div>
 
              </div>
 

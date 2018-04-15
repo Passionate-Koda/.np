@@ -16,6 +16,14 @@ function getInsight($dbconn){
   }
 }
 
+function getEntityCategoryAdmin($dbconn,$tb,$nm,$gid){
+  $stmt = $dbconn->prepare("SELECT $nm FROM $tb WHERE hash_id=:gid");
+  $stmt->bindParam(":gid", $gid);
+  $stmt->execute();
+  $nm = $stmt->fetch(PDO::FETCH_BOTH);
+  return $nm;
+}
+
 function getNewsCateg($dbconn){
   $stmt = $dbconn->prepare("SELECT * FROM news_category");
   $stmt->execute();
