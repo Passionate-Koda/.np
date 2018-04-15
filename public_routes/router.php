@@ -220,16 +220,26 @@ include APP_PATH."/public_views/index.php";
   case "insight":
   include APP_PATH."/public_views/insight.php";
   break;
+  case "insights?p=$p":
+  include APP_PATH."/public_views/insight.php";
+  break;
 
   case "insights?c=$c":
   include APP_PATH."/public_views/insight_category.php";
   break;
 
-  case "insights?p=$p":
+  case "insights?c=$c&p=$p":
   include APP_PATH."/public_views/insight_category.php";
   break;
 
+  // case "insights?cp=$cp":
+  // include APP_PATH."/public_views/insight_category.php";
+  // break;
+
   case "news":
+  include APP_PATH."/public_views/news.php";
+  break;
+  case "news?p=$p":
   include APP_PATH."/public_views/news.php";
   break;
 
@@ -240,6 +250,31 @@ include APP_PATH."/public_views/index.php";
   case "news?c=$c":
   include APP_PATH."/public_views/news_category.php";
   break;
+  case "news?c=$c&p=$p":
+  include APP_PATH."/public_views/news_category.php";
+  break;
+  // case "news?cp=$cp":
+  // include APP_PATH."/public_views/news_category.php";
+  // break;
+
+  case "campus_news":
+  include APP_PATH."/public_views/campus_news.php";
+  break;
+
+  case "campus_news?id=$id":
+  include APP_PATH."/public_views/campus_news_post.php";
+  break;
+
+  case "campus_news?c=$c&p=$p":
+  include APP_PATH."/public_views/campus_news_category.php";
+  break;
+  case "campus_news?c=$c":
+  include APP_PATH."/public_views/campus_news_category.php";
+  break;
+
+  // case "campus_news?cp=$cp":
+  // include APP_PATH."/public_views/campus_news_category.php";
+  // break;
 
   case "u_verify?vcid=$vcid":
   include APP_PATH."/public_views/verify.php";

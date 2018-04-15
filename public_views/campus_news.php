@@ -1,6 +1,6 @@
 <?php
-$page_title = "News - New.Mckodev";
-$page_name = "news";
+$page_title = "Campus News - New.Mckodev";
+$page_name = "campus news";
 include("include/header.php");
 
 ?>
@@ -35,7 +35,7 @@ include("include/header.php");
 
 
 <?php
-$vis = "Show";
+$vis = "show";
 $page = 1;
 $perPage = 10;
 
@@ -46,7 +46,7 @@ if(isset($_GET['p'])){
 
 $offset  = ($page - 1 ) * $perPage;
 
-$statement = $conn->prepare("SELECT * FROM news WHERE visibility = :sh");
+$statement = $conn->prepare("SELECT * FROM campus_news WHERE visibility = :sh");
 
 $statement->bindParam(":sh", $vis);
 $statement->execute();
@@ -58,9 +58,7 @@ $totalPages = ceil($count/$perPage);
 
 
 <?php
-
-
-getPaginatedNews($conn,$offset,$perPage) ?>
+getPaginatedCampusNews($conn,$offset,$perPage) ?>
 </div>
 
 </div>
@@ -77,9 +75,9 @@ getPaginatedNews($conn,$offset,$perPage) ?>
   <?php if(isset($_GET['p'])){
     if($_GET['p'] >= 2){
       $prev = $_GET['p'] - 1;
-      echo '<a class="prev page-numbers" href="news?p='.$prev.'"><i class="fa fa-angle-double-left"></i>Previous</a>';
+      echo '<a class="prev page-numbers" href="campus_news?p='.$prev.'"><i class="fa fa-angle-double-left"></i>Previous</a>';
     }elseif($_GET['p'] == 2){
-      echo '<a class="prev page-numbers" href="news"><i class="fa fa-angle-double-left"></i>Previous</a>';
+      echo '<a class="prev page-numbers" href="campus_news"><i class="fa fa-angle-double-left"></i>Previous</a>';
     }
 
   }
@@ -92,10 +90,10 @@ getPaginatedNews($conn,$offset,$perPage) ?>
   if($totalPages > 1 && $totalPages !=$finalPage ){
     if(isset($_GET['p'])){
       $next = $_GET['p'] + 1;
-      echo '<a class="next page-numbers" href="news?p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
+      echo '<a class="next page-numbers" href="campus_news?p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
     }else{
       $next = $page + 1;
-      echo '<a class="next page-numbers" href="news?p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
+      echo '<a class="next page-numbers" href="campus_news?p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
     }
   }
 

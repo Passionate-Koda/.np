@@ -26,7 +26,7 @@ include("include/header.php");
         <div class="composs-panel">
 
           <div class="composs-panel-title">
-            <strong><?php $categ = getEntityCategory($conn,'news_category','news_category',$_GET['c']); echo $categ['news_category']; ?></strong>
+            <strong><?php $categ = getEntityCategory($conn,'campus','campus_name',$_GET['c']); echo $categ['campus_name']; ?> News</strong>
           </div>
 
           <div class="composs-panel-inner">
@@ -46,12 +46,13 @@ if(isset($_GET['p'])){
 
 $offset  = ($page - 1 ) * $perPage;
 
-$statement = $conn->prepare("SELECT * FROM news WHERE category=:cat AND visibility = :sh");
+$statement = $conn->prepare("SELECT * FROM campus_news WHERE campus=:cat AND visibility = :sh");
 
 $statement->bindParam(":sh", $vis);
 $statement->bindParam(":cat", $_GET['c']);
 $statement->execute();
 $count = $statement->rowCount();
+
 $totalPages = ceil($count/$perPage);
 ?>
 
@@ -61,7 +62,7 @@ $totalPages = ceil($count/$perPage);
 <?php
 
 
-getCatPaginatedNews($conn,$offset,$perPage,$_GET['c']) ?>
+getCatPaginatedCampusNews($conn,$offset,$perPage,$_GET['c']) ?>
 </div>
 
 </div>
@@ -78,9 +79,9 @@ getCatPaginatedNews($conn,$offset,$perPage,$_GET['c']) ?>
   <?php if(isset($_GET['p'])){
     if($_GET['p'] >= 2){
       $prev = $_GET['p'] - 1;
-      echo '<a class="prev page-numbers" href="news?p='.$prev.'"><i class="fa fa-angle-double-left"></i>Previous</a>';
+      echo '<a class="prev page-numbers" href="campus_news?c='.$_GET['c'].'&p='.$prev.'"><i class="fa fa-angle-double-left"></i>Previous</a>';
     }elseif($_GET['p'] == 2){
-      echo '<a class="prev page-numbers" href="news"><i class="fa fa-angle-double-left"></i>Previous</a>';
+      echo '<a class="prev page-numbers" href="campus_news?c='.$_GET['c'].'"><i class="fa fa-angle-double-left"></i>Previous</a>';
     }
 
   }
@@ -93,10 +94,10 @@ getCatPaginatedNews($conn,$offset,$perPage,$_GET['c']) ?>
   if($totalPages > 1 && $totalPages !=$finalPage ){
     if(isset($_GET['p'])){
       $next = $_GET['p'] + 1;
-      echo '<a class="next page-numbers" href="news?p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
+      echo '<a class="next page-numbers" href="campus_news?p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
     }else{
       $next = $page + 1;
-      echo '<a class="next page-numbers" href="news?p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
+      echo '<a class="next page-numbers" href="campus_news?p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
     }
   }
 
