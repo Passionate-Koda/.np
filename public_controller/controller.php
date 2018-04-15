@@ -248,6 +248,33 @@ function getPaginatedNews($dbconn,$fs,$pp){
     </div>';
   }
 }
+function getPaginatedCampusNews($dbconn,$fs,$pp){
+  $vis = "show";
+  $stmt = $dbconn->prepare("SELECT * FROM campus_news WHERE visibility=:sh ORDER BY id DESC LIMIT $fs,$pp");
+  $stmt->bindParam(":sh", $vis);
+  // $stmt->bindParam(":bk", $pp);
+  $stmt->execute();
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    extract($row);
+    $SDate = decodeDate($date_created);
+    $bd = previewBody($body,33);
+
+    echo '<div class="item">
+    <div class="item-header">
+    <a href="campus_news?id='.$hash_id.'" class="img-read-later-button">Read</a>
+    <a href="campus_news?id='.$hash_id.'"><div style="width:200px; height:150px; overflow:hidden"><img   src="'.$image_1.'" alt="'.$headline.'" /></div></a>
+    </div>
+    <div class="item-content">
+    <h2><a href="campus_news?id='.$hash_id.'">'.$headline.'</a></h2>
+    <span class="item-meta">
+    <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
+    <a href="insight?id='.$hash_id.'" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://news.mckodev.com.ng/insight?id='.$hash_id.'"></fb:comments-count></a>
+    </span>
+    <p>'.$bd.'...</p>
+    </div>
+    </div>';
+  }
+}
 
 
 
@@ -296,6 +323,34 @@ function getCatPaginatedNews($dbconn,$fs,$pp,$cat){
     </div>
     <div class="item-content">
     <h2><a href="news?id='.$hash_id.'">'.$headline.'</a></h2>
+    <span class="item-meta">
+    <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
+    <a href="insight?id='.$hash_id.'" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://news.mckodev.com.ng/insight?id='.$hash_id.'"></fb:comments-count></a>
+    </span>
+    <p>'.$bd.'...</p>
+    </div>
+    </div>';
+  }
+}
+
+function getCatPaginatedCampusNews($dbconn,$fs,$pp,$cat){
+  $vis = "show";
+  $stmt = $dbconn->prepare("SELECT * FROM campus_news WHERE visibility=:sh AND campus=:cat ORDER BY id DESC LIMIT $fs,$pp");
+  $stmt->bindParam(":sh", $vis);
+  $stmt->bindParam(":cat", $cat);
+  $stmt->execute();
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    extract($row);
+    $SDate = decodeDate($date_created);
+    $bd = previewBody($body,33);
+
+    echo '<div class="item">
+    <div class="item-header">
+    <a href="campus_news?id='.$hash_id.'" class="img-read-later-button">Read</a>
+    <a href="campus_news?id='.$hash_id.'"><div style="width:200px; height:150px; overflow:hidden"><img   src="'.$image_1.'" alt="'.$headline.'" /></div></a>
+    </div>
+    <div class="item-content">
+    <h2><a href="campus_news?id='.$hash_id.'">'.$headline.'</a></h2>
     <span class="item-meta">
     <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
     <a href="insight?id='.$hash_id.'" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://news.mckodev.com.ng/insight?id='.$hash_id.'"></fb:comments-count></a>

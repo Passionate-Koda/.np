@@ -6,7 +6,7 @@ include("include/header.php");
 
 
 
-$stmt = $conn->prepare("SELECT * FROM news WHERE hash_id =:idd");
+$stmt = $conn->prepare("SELECT * FROM campus_news WHERE hash_id =:idd");
 $stmt->bindParam(":idd", $_GET['id']);
 // $stmt->bindParam(":bk", $pp);
 $stmt->execute();
@@ -60,7 +60,7 @@ $SDate = decodeDate($date_created);
                    <div class="composs-main-article-meta">
                      <span class="item"><i class="material-icons">access_time</i><?php echo $SDate ?></span>
                      <a href="#comments" class="item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://news.mckodev.com.ng/news?id=<?php echo $_GET['id'] ?>"></fb:comments-count> Comments</a>
-                     <span class="item"><i class="fa fa-folder"></i><?php $categ = getEntityCategory($conn,'news_category','news_category',$category); echo $categ['news_category'];?></span>
+                     <span class="item"><i class="fa fa-folder"></i><?php $categ = getEntityCategory($conn,'campus','campus_name',$campus); echo $categ['campus_name'];?></span>
                      <span class="item"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
 <script type="IN/Share" data-url="http://philanthropycircuit/news?id=<?php echo $_GET['id'] ?>"></script></span>
 
