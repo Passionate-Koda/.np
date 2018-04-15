@@ -182,9 +182,12 @@ function getReportPreview($dbconn){
 }
 
 
+
+
 function getPaginatedInsight($dbconn,$fs,$pp){
-  $stmt = $dbconn->prepare("SELECT * FROM insight ORDER BY id DESC LIMIT $fs,$pp");
-  // $stmt->bindParam(":ff", $fs);
+  $vis = "show";
+  $stmt = $dbconn->prepare("SELECT * FROM insight WHERE visibility=:sh ORDER BY id DESC LIMIT $fs,$pp");
+  $stmt->bindParam(":sh", $vis);
   // $stmt->bindParam(":bk", $pp);
   $stmt->execute();
   while($row = $stmt->fetch(PDO::FETCH_BOTH)){
@@ -208,6 +211,103 @@ function getPaginatedInsight($dbconn,$fs,$pp){
     </div>';
   }
 }
+
+function getEntityCategory($dbconn,$tb,$nm,$gid){
+  $stmt = $dbconn->prepare("SELECT $nm FROM $tb WHERE hash_id=:gid");
+  $stmt->bindParam(":gid", $gid);
+  $stmt->execute();
+  $nm = $stmt->fetch(PDO::FETCH_BOTH);
+  return $nm;
+}
+
+
+function getPaginatedNews($dbconn,$fs,$pp){
+  $vis = "show";
+  $stmt = $dbconn->prepare("SELECT * FROM news WHERE visibility=:sh ORDER BY id DESC LIMIT $fs,$pp");
+  $stmt->bindParam(":sh", $vis);
+  // $stmt->bindParam(":bk", $pp);
+  $stmt->execute();
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    extract($row);
+    $SDate = decodeDate($date_created);
+    $bd = previewBody($body,33);
+
+    echo '<div class="item">
+    <div class="item-header">
+    <a href="news?id='.$hash_id.'" class="img-read-later-button">Read</a>
+    <a href="news?id='.$hash_id.'"><div style="width:200px; height:150px; overflow:hidden"><img   src="'.$image_1.'" alt="'.$headline.'" /></div></a>
+    </div>
+    <div class="item-content">
+    <h2><a href="news?id='.$hash_id.'">'.$headline.'</a></h2>
+    <span class="item-meta">
+    <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
+    <a href="insight?id='.$hash_id.'" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://news.mckodev.com.ng/insight?id='.$hash_id.'"></fb:comments-count></a>
+    </span>
+    <p>'.$bd.'...</p>
+    </div>
+    </div>';
+  }
+}
+
+
+
+function getCatPaginatedInsight($dbconn,$fs,$pp,$cat){
+  $vis = "show";
+  $stmt = $dbconn->prepare("SELECT * FROM insight WHERE visibility=:sh AND category=:cat ORDER BY id DESC LIMIT $fs,$pp");
+  $stmt->bindParam(":sh", $vis);
+  $stmt->bindParam(":cat", $cat);
+  $stmt->execute();
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    extract($row);
+    $SDate = decodeDate($date_created);
+    $bd = previewBody($body,33);
+
+    echo '<div class="item">
+    <div class="item-header">
+    <a href="insight?id='.$hash_id.'" class="img-read-later-button">Read</a>
+    <a href="insight?id='.$hash_id.'"><div style="width:200px; height:150px; overflow:hidden"><img   src="'.$image_1.'" alt="'.$title.'" /></div></a>
+    </div>
+    <div class="item-content">
+    <h2><a href="insight?id='.$hash_id.'">'.$title.'</a></h2>
+    <span class="item-meta">
+    <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
+    <a href="insight?id='.$hash_id.'" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://news.mckodev.com.ng/insight?id='.$hash_id.'"></fb:comments-count></a>
+    </span>
+    <p>'.$bd.'...</p>
+    </div>
+    </div>';
+  }
+}
+function getCatPaginatedNews($dbconn,$fs,$pp,$cat){
+  $vis = "show";
+  $stmt = $dbconn->prepare("SELECT * FROM news WHERE visibility=:sh AND category=:cat ORDER BY id DESC LIMIT $fs,$pp");
+  $stmt->bindParam(":sh", $vis);
+  $stmt->bindParam(":cat", $cat);
+  $stmt->execute();
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    extract($row);
+    $SDate = decodeDate($date_created);
+    $bd = previewBody($body,33);
+
+    echo '<div class="item">
+    <div class="item-header">
+    <a href="news?id='.$hash_id.'" class="img-read-later-button">Read</a>
+    <a href="news?id='.$hash_id.'"><div style="width:200px; height:150px; overflow:hidden"><img   src="'.$image_1.'" alt="'.$headline.'" /></div></a>
+    </div>
+    <div class="item-content">
+    <h2><a href="news?id='.$hash_id.'">'.$headline.'</a></h2>
+    <span class="item-meta">
+    <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
+    <a href="insight?id='.$hash_id.'" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://news.mckodev.com.ng/insight?id='.$hash_id.'"></fb:comments-count></a>
+    </span>
+    <p>'.$bd.'...</p>
+    </div>
+    </div>';
+  }
+}
+
+
+
 function getPaginatedArticle($dbconn,$fs,$pp){
   $stmt = $dbconn->prepare("SELECT * FROM blog ORDER BY id DESC LIMIT $fs,$pp");
   // $stmt->bindParam(":ff", $fs);
@@ -354,6 +454,19 @@ function fetchFeatureLink($dbconn,$categ){
   while($row = $stmt->fetch(PDO::FETCH_BOTH)){
     extract($row);
     echo '<li><a href="'.$categ.'?c='.$hash_id.'">'.$package_name.'</a></li>';
+  }
+
+}
+
+function fetchNewsLink($dbconn,$categ){
+
+  $stmt = $dbconn->prepare("SELECT * FROM news_category ORDER BY news_category ASC");
+
+  $stmt->execute();
+
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    extract($row);
+    echo '<li><a href="'.$categ.'?c='.$hash_id.'">'.$news_category.'</a></li>';
   }
 
 }

@@ -1,7 +1,7 @@
 <?php
-$page_title = "Trainings - New.Mckodev";
-$page_name = "training";
-include("include/header2.php");
+$page_title = "Programs - New.Mckodev";
+$page_name = "program";
+include("include/header.php");
 
 ?>
 <!-- BEGIN .content -->

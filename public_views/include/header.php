@@ -151,8 +151,8 @@ echo '<meta name="twitter:card" content="summary_large_image">
 									<li><a href="feature"><span>Features</span></a>
 										<ul class="sub-menu">
 											<li><a href="#">Witness Report</a></li>
-											<li><a href="#">Articles</a></li>
-											<li><a href="#">insignts</a>
+											<li><a href="articles">Articles</a></li>
+											<li><a href="insight">insignts</a>
 												<ul class="sub-menu">
 												<?php fetchFeatureLink($conn,'insights') ?>
 												</ul></li>
@@ -255,16 +255,16 @@ echo '<meta name="twitter:card" content="summary_large_image">
 									</li>
 									<li><a href="#"><span>News</span></a>
 										<ul class="sub-menu">
-											<li><a href="global">Global</a></li>
+											<?php fetchNewsLink($conn,'news') ?>
+											<!-- <li><a href="global">Global</a></li>
 											<li><a href="africa">Africa</a></li>
-
-											<li><a href="global">Nigeria</a></li>
+											<li><a href="global">Nigeria</a></li> -->
 										</ul>
 									</li>
 									<li><a href="#"><span>Opportunities</span></a>
 										<ul class="sub-menu">
-											<li><a href="grants">Trainings</a></li>
-											<li><a href="trainings">Events</a></li>
+											<li><a href="training">Trainings</a></li>
+											<li><a href="program">Events</a></li>
 										</ul>
 									</li>
 									<!-- <li><a href="team">Our Team</a></li> -->
