@@ -37,7 +37,7 @@ include("include/header.php");
 <?php
 $vis = "show";
 $page = 1;
-$perPage = 10;
+$perPage = 1;
 
 
 if(isset($_GET['p'])){
@@ -94,10 +94,10 @@ getCatPaginatedCampusNews($conn,$offset,$perPage,$_GET['c']) ?>
   if($totalPages > 1 && $totalPages !=$finalPage ){
     if(isset($_GET['p'])){
       $next = $_GET['p'] + 1;
-      echo '<a class="next page-numbers" href="campus_news?p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
+      echo '<a class="next page-numbers" href="campus_news?c='.$_GET['c'].'&p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
     }else{
       $next = $page + 1;
-      echo '<a class="next page-numbers" href="campus_news?p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
+      echo '<a class="next page-numbers" href="campus_news?c='.$_GET['c'].'&p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
     }
   }
 
@@ -113,46 +113,7 @@ getCatPaginatedCampusNews($conn,$offset,$perPage,$_GET['c']) ?>
 <!-- END .composs-main-content -->
 </div>
 <!-- BEGIN #sidebar -->
-<aside id="sidebar">
-  <!-- BEGIN .widget -->
-  <div class="widget">
-    <h3>Latest articles</h3>
-    <div class="widget-content ot-w-article-list">
-
-      <?php getArticlePreview($conn) ?>
-
-    </div>
-    <!-- END .widget -->
-  </div>
-  <div class="widget">
-    <div class="widget-content">
-      <a href="#" target="_blank"><img src="images/o2.jpg" alt="" /></a>
-    </div>
-    <!-- END .widget -->
-  </div>
-
-  <!-- BEGIN .widget -->
-  <div class="widget">
-    <h3>UPCOMING EVENTS</h3>
-    <div class="widget-content ot-w-comments-list">
-
-      <?php getPreviewEvent($conn) ?>
-
-    </div>
-    <!-- END .widget -->
-  </div>
-  <!-- BEGIN .widget -->
-
-
-
-  <!-- BEGIN .widget -->
-
-
-  <!-- BEGIN .widget -->
-
-
-  <!-- END #sidebar -->
-</aside>
+<?php include 'include/campus_articles_aside.php' ?>
 
 </div>
 

@@ -78,7 +78,7 @@ getCatPaginatedNews($conn,$offset,$perPage,$_GET['c']) ?>
   <?php if(isset($_GET['p'])){
     if($_GET['p'] >= 2){
       $prev = $_GET['p'] - 1;
-      echo '<a class="prev page-numbers" href="news?p='.$prev.'"><i class="fa fa-angle-double-left"></i>Previous</a>';
+      echo '<a class="prev page-numbers" href="news?c='.$_GET['c'].'&p='.$prev.'"><i class="fa fa-angle-double-left"></i>Previous</a>';
     }elseif($_GET['p'] == 2){
       echo '<a class="prev page-numbers" href="news"><i class="fa fa-angle-double-left"></i>Previous</a>';
     }
@@ -93,10 +93,10 @@ getCatPaginatedNews($conn,$offset,$perPage,$_GET['c']) ?>
   if($totalPages > 1 && $totalPages !=$finalPage ){
     if(isset($_GET['p'])){
       $next = $_GET['p'] + 1;
-      echo '<a class="next page-numbers" href="news?p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
+      echo '<a class="next page-numbers" href="news?c='.$_GET['c'].'&p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
     }else{
       $next = $page + 1;
-      echo '<a class="next page-numbers" href="news?p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
+      echo '<a class="next page-numbers" href="news?c='.$_GET['c'].'&p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
     }
   }
 
@@ -112,46 +112,7 @@ getCatPaginatedNews($conn,$offset,$perPage,$_GET['c']) ?>
 <!-- END .composs-main-content -->
 </div>
 <!-- BEGIN #sidebar -->
-<aside id="sidebar">
-  <!-- BEGIN .widget -->
-  <div class="widget">
-    <h3>Latest articles</h3>
-    <div class="widget-content ot-w-article-list">
-
-      <?php getArticlePreview($conn) ?>
-
-    </div>
-    <!-- END .widget -->
-  </div>
-  <div class="widget">
-    <div class="widget-content">
-      <a href="#" target="_blank"><img src="images/o2.jpg" alt="" /></a>
-    </div>
-    <!-- END .widget -->
-  </div>
-
-  <!-- BEGIN .widget -->
-  <div class="widget">
-    <h3>UPCOMING EVENTS</h3>
-    <div class="widget-content ot-w-comments-list">
-
-      <?php getPreviewEvent($conn) ?>
-
-    </div>
-    <!-- END .widget -->
-  </div>
-  <!-- BEGIN .widget -->
-
-
-
-  <!-- BEGIN .widget -->
-
-
-  <!-- BEGIN .widget -->
-
-
-  <!-- END #sidebar -->
-</aside>
+  <?php include 'include/article_aside.php' ?>
 
 </div>
 

@@ -19,117 +19,18 @@ include("include/header.php");
         <div class="composs-panel">
 
           <div class="composs-panel-title">
-            <strong>Trainings/Webinars</strong>
+            <strong>Programs/Seminars</strong>
           </div>
 
           <div class="composs-panel-inner">
 
             <div class="composs-blog-list lets-do-1">
 
-              <!-- <div class="item">
 
-                <div class="item-content" style="margin-left:0px">
-                  <h2><a href="post.php">4 Shocking Things From Civil War That You Won't See in the Movie</a></h2>
-                  <span class="item-meta">
-                    <span class="item-meta-item"><i class="material-icons">access_time</i>January 12, 2015</span>
-                    <a href="post.html#comments" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i>35</a>
-                  </span>
-                  <p>With the recent trailers and more plot points about Captain America: Civil War being made known, it is becoming more and more likely that Civil War is going to be a different...</p>
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="item-content" style="margin-left:0px">
-                  <h2><a href="post.html">Horror Icon Angus Scrimm Passes Away; The Tall Man Remains Immortal</a></h2>
-                  <span class="item-meta">
-                    <span class="item-meta-item"><i class="material-icons">access_time</i>January 12, 2015</span>
-                    <a href="post.html#comments" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i>35</a>
-                  </span>
-                  <p>Angus Scrimm passed away on Saturday at the age of 89. He was best known for portraying The Tall Man in one of my favorite cult horror movie series of all-time...</p>
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="item-content" style="margin-left:0px">
-                  <h2><a href="post.php">We Almost Saw David Bowie In The Marvel Cinematic Universe</a></h2>
-                  <span class="item-meta">
-                    <span class="item-meta-item"><i class="material-icons">access_time</i>January 12, 2015</span>
-                    <a href="post.html#comments" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i>35</a>
-                  </span>
-                  <p>As far as hammer blows to the cultural brain stem go, the death of David Bowie on January 10 was particularly brutal. One of the very few true icons of Latest culture...</p>
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="item-content" style="margin-left:0px">
-                  <h2><a href="post.html">Horror Icon Angus Scrimm Passes Away; The Tall Man Remains Immortal</a></h2>
-                  <span class="item-meta">
-                    <span class="item-meta-item"><i class="material-icons">access_time</i>January 12, 2015</span>
-                    <a href="post.html#comments" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i>35</a>
-                  </span>
-                  <p>Angus Scrimm passed away on Saturday at the age of 89. He was best known for portraying The Tall Man in one of my favorite cult horror movie series of all-time...</p>
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="item-content" style="margin-left:0px">
-                  <span class="item-meta">
-                    <h2><a href="post.php">We Almost Saw David Bowie In The Marvel Cinematic Universe</a></h2>
-                    <span class="item-meta-item"><i class="material-icons">access_time</i>January 12, 2015</span>
-                    <a href="post.html#comments" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i>35</a>
-                  </span>
-                  <p>As far as hammer blows to the cultural brain stem go, the death of David Bowie on January 10 was particularly brutal. One of the very few true icons of Latest culture...</p>
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="item-content" style="margin-left:0px">
-                  <h2><a href="post.php">Did You Spot This Fun Indiana Jones Easter Egg In Star Wars 7: The Force Awakens?</a></h2>
-                  <span class="item-meta">
-                    <span class="item-meta-item"><i class="material-icons">access_time</i>January 12, 2015</span>
-                    <a href="post.html#comments" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i>35</a>
-                  </span>
-                  <p>As far as hammer blows to the cultural brain stem go, the death of David Bowie on January 10 was particularly brutal. One of the very few true icons of Latest culture...</p>
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="item-content" style="margin-left:0px">
-                  <h2><a href="post.php">4 Shocking Things From Civil War That You Won't See in the Movie</a></h2>
-                  <span class="item-meta">
-                    <span class="item-meta-item"><i class="material-icons">access_time</i>January 12, 2015</span>
-                    <a href="post.html#comments" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i>35</a>
-                  </span>
-                  <p>With the recent trailers and more plot points about Captain America: Civil War being made known, it is becoming more and more likely that Civil War is going to be a different...</p>
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="item-content" style="margin-left:0px">
-                  <h2><a href="post.php">Horror Icon Angus Scrimm Passes Away; The Tall Man Remains Immortal</a></h2>
-                  <span class="item-meta">
-                    <span class="item-meta-item"><i class="material-icons">access_time</i>January 12, 2015</span>
-                    <a href="post.html#comments" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i>35</a>
-                  </span>
-                  <p>Angus Scrimm passed away on Saturday at the age of 89. He was best known for portraying The Tall Man in one of my favorite cult horror movie series of all-time...</p>
-                </div>
-              </div> -->
-
-              <!-- <div class="item">
-                <div class="item-content" style="margin-left:0px">
-                  <h2><a href="post.php">We Almost Saw David Bowie In The Marvel Cinematic Universe</a></h2>
-                  <span class="item-meta">
-                    <span class="item-meta-item"><i class="material-icons">access_time</i>January 12, 2015</span>
-                    <a href="post.php" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i>35</a>
-                  </span>
-
-                  <p>As far as hammer blows to the cultural brain stem go, the death of David Bowie on January 10 was particularly brutal. One of the very few true icons of Latest culture...</p>
-                </div>
-              </div> -->
               <?php
               $vis = "Show";
               $page = 1;
-              $perPage = 10;
+              $perPage = 2;
 
 
               if(isset($_GET['p'])){
@@ -164,9 +65,9 @@ include("include/header.php");
             <?php if(isset($_GET['p'])){
               if($_GET['p'] >= 2){
                 $prev = $_GET['p'] - 1;
-                echo '<a class="prev page-numbers" href="grants?p='.$prev.'"><i class="fa fa-angle-double-left"></i>Previous</a>';
+                echo '<a class="prev page-numbers" href="program?p='.$prev.'"><i class="fa fa-angle-double-left"></i>Previous</a>';
               }elseif($_GET['p'] == 2){
-                echo '<a class="prev page-numbers" href="grants"><i class="fa fa-angle-double-left"></i>Previous</a>';
+                echo '<a class="prev page-numbers" href="program"><i class="fa fa-angle-double-left"></i>Previous</a>';
               }
 
             }
@@ -179,10 +80,10 @@ include("include/header.php");
             if($totalPages > 1 && $totalPages !=$finalPage ){
               if(isset($_GET['p'])){
                 $next = $_GET['p'] + 1;
-                echo '<a class="next page-numbers" href="grants?p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
+                echo '<a class="next page-numbers" href="program?p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
               }else{
                 $next = $page + 1;
-                echo '<a class="next page-numbers" href="grants?p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
+                echo '<a class="next page-numbers" href="program?p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
               }
             }
 
@@ -200,51 +101,7 @@ include("include/header.php");
         <!-- END .composs-main-content -->
       </div>
       <!-- BEGIN #sidebar -->
-      <aside id="sidebar">
-
-        <!-- BEGIN .widget -->
-
-
-        <!-- BEGIN .widget -->
-
-
-        <!-- BEGIN .widget -->
-
-
-        <!-- BEGIN .widget -->
-        <div class="widget">
-          <h3>Latest articles</h3>
-          <div class="widget-content ot-w-article-list">
-
-          <?php getArticlePreview($conn); ?>
-
-          </div>
-          <!-- END .widget -->
-        </div>
-
-
-        <div class="widget">
-          <div class="widget-content">
-            <a href="#" target="_blank"><img src="images/o2.jpg" alt="" /></a>
-          </div>
-          <!-- END .widget -->
-        </div>
-
-        <!-- BEGIN .widget -->
-        <div class="widget">
-          <h3>UPCOMING EVENTS</h3>
-          <div class="widget-content ot-w-comments-list">
-
-            <?php getPreviewEvent($conn) ?>
-
-          </div>
-          <!-- END .widget -->
-        </div>
-        <!-- BEGIN .widget -->
-
-
-        <!-- END #sidebar -->
-      </aside>
+      <?php include 'include/article_aside.php' ?>
 
     </div>
 

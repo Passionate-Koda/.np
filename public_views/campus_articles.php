@@ -44,7 +44,7 @@ include("include/header.php");
 
                 $offset  = ($page - 1 ) * $perPage;
 
-                $statement = $conn->prepare("SELECT * FROM blog WHERE visibility = :sh");
+                $statement = $conn->prepare("SELECT * FROM campus_article WHERE visibility = :sh");
 
                 $statement->bindParam(":sh", $vis);
                 $statement->execute();
@@ -58,7 +58,7 @@ include("include/header.php");
                 <?php
 
 
-                getPaginatedArticle($conn,$offset,$perPage) ?>
+                getPaginatedCampusArticle($conn,$offset,$perPage) ?>
 
 
 
@@ -72,9 +72,9 @@ include("include/header.php");
             <?php if(isset($_GET['p'])){
               if($_GET['p'] >= 2){
                 $prev = $_GET['p'] - 1;
-                echo '<a class="prev page-numbers" href="articles?p='.$prev.'"><i class="fa fa-angle-double-left"></i>Previous</a>';
+                echo '<a class="prev page-numbers" href="campus_articles?p='.$prev.'"><i class="fa fa-angle-double-left"></i>Previous</a>';
               }elseif($_GET['p'] == 2){
-                echo '<a class="prev page-numbers" href="articles"><i class="fa fa-angle-double-left"></i>Previous</a>';
+                echo '<a class="prev page-numbers" href="campus_articles"><i class="fa fa-angle-double-left"></i>Previous</a>';
               }
 
             }
@@ -87,10 +87,10 @@ include("include/header.php");
             if($totalPages > 1 && $totalPages !=$finalPage ){
               if(isset($_GET['p'])){
                 $next = $_GET['p'] + 1;
-                echo '<a class="next page-numbers" href="articles?p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
+                echo '<a class="next page-numbers" href="campus_articles?p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
               }else{
                 $next = $page + 1;
-                echo '<a class="next page-numbers" href="articles?p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
+                echo '<a class="next page-numbers" href="campus_articles?p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
               }
             }
 
@@ -107,7 +107,7 @@ include("include/header.php");
         <!-- END .composs-main-content -->
       </div>
       <!-- BEGIN #sidebar -->
-<?php include 'include/insight_aside.php' ?>
+      <?php include 'include/campus_news_aside.php' ?>
 
 </div>
 

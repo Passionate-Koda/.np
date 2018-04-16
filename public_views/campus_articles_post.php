@@ -1,12 +1,11 @@
-<?php
-ob_start();
-$page_title = "Insight - New.Mckodev";
-$page_name = "insight_post";
+news.mckodev.com.ng<?php
+$page_title = "Articles - New.Mckodev";
+$page_name = "article_post";
 include("include/header.php");
 
 
 
-$stmt = $conn->prepare("SELECT * FROM insight WHERE hash_id =:idd");
+$stmt = $conn->prepare("SELECT * FROM campus_article WHERE hash_id =:idd");
 $stmt->bindParam(":idd", $_GET['id']);
 // $stmt->bindParam(":bk", $pp);
 $stmt->execute();
@@ -54,24 +53,23 @@ $SDate = decodeDate($date_created);
                  <h1><?php echo $title ?></h1>
 
                  <div class="composs-main-article-head">
-                   <div class="composs-main-article-media" >
-                     <img src="<?php echo $image_1 ?>" alt="<?php echo $title ?>" style="min-width:100%" />
+                   <div class="composs-main-article-media">
+                     <img style="min-width:100%" src="<?php echo $image_1 ?>" alt="<?php echo $title ?>" />
                    </div>
                    <div class="composs-main-article-meta">
                      <span class="item"><i class="material-icons">access_time</i><?php echo $SDate ?></span>
-                     <a href="#comments" class="item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://news.mckodev.com.ng/insight?id=<?php echo $_GET['id'] ?>"></fb:comments-count> Comments</a>
-                     <span class="item"><i class="fa fa-folder"></i><?php $categ = getEntityCategory($conn,'package_name','package_name',$category); echo $categ['package_name'];?></span>
+                     <span class="item"><i class="fa fa-user"></i><?php echo $author ?></span>
+                     <span class="item"><i class="fa fa-folder"></i><?php $categ = getEntityCategory($conn,'campus','campus_name',$campus); echo $categ['campus_name'];?></span>
                      <!-- <span class="item"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
-<script type="IN/Share" data-url="http://philanthropycircuit/insight?id=<?php //echo $_GET['id'] ?>"></script></span>
+<script type="IN/Share" data-url="http://philanthropycircuit/article?id=<?php //echo $_GET['id'] ?>"></script></span>
 
  <span class="item"><a class="twitter-share-button"
   href="https://twitter.com/intent/tweet"
   data-size="small">
 Tweet</a></span>
-
-<span style="display:block;" class="item"><div class="fb-share-button" data-href="http://news.mckodev.com.ng/insight?id=<?php //echo $_GET['id'] ?>" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://news.mckodev.com.ng/insight?id=<?php// echo $_GET['id'] ?>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a> </div></span> -->
+<span class="item"><div class="fb-share-button" data-href="http://news.mckodev.com.ng/article?id=<?php// echo $_GET['id'] ?>" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://news.mckodev.com.ng/article?id=<?php// echo $_GET['id'] ?>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a> </div></span>
+<span class="item"><div class="sharethis-inline-share-buttons"></div></span> -->
 <span class="item"><div class="sharethis-inline-share-buttons" data-url="/article?id=<?php echo $_GET['id'] ?>" data-title="<?php echo "Boardspeck - ".$title ?>" data-image></div></span>
-
                    </div>
 
                  </div>
@@ -89,7 +87,7 @@ Tweet</a></span>
 
 
                </div>
-               <div class="fb-comments" data-mobile="true" data-href="http://news.mckodev.com.ng/insight?id=<?php echo $_GET['id'] ?>" data-width="700px" data-numposts="10"></div>
+                <div class="fb-comments" data-mobile="true" data-href="http://news.mckodev.com.ng/article?id=<?php echo $_GET['id'] ?>" data-width="700px" data-numposts="10"></div>
 
              </div>
 
@@ -102,7 +100,7 @@ Tweet</a></span>
        </div>
 
        <!-- BEGIN #sidebar -->
-        <?php include 'include/event_aside.php' ?>
+<?php 'include/nigeria_aside.php' ?>
 
      </div>
 

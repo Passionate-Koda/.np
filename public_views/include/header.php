@@ -14,58 +14,61 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 	<?php
-	if($page_name == "article_post"){
-		$info = getPostInfo($conn,'blog',$_GET['id']);
-		$bd = previewBody($info['body'], 22);
-		echo '<meta property="og:title" content="" />
-		    <meta property="og:image" content=http://philanthropycircuit.com/" />
-				<meta property="og:image:width" content="450"/>
-		<meta property="og:image:height" content="298"/>
-		<meta property="og:description" content="" />';
+// 	if($page_name == "article_post"){
+// 		$info = getPostInfo($conn,'blog',$_GET['id']);
+// 		$bd = previewBody($info['body'], 22);
+// 		echo '<meta property="og:title" content="" />
+// 		    <meta property="og:image" content=http://philanthropycircuit.com/" />
+// 				<meta property="og:image:width" content="450"/>
+// 		<meta property="og:image:height" content="298"/>
+// 		<meta property="og:description" content="" />';
+//
+// echo '<meta name="twitter:card" content="summary_large_image">
+// <meta name="twitter:site" content="@mckodev">
+// <meta name="twitter:title" content="'.$info['title'].'">
+// <meta name="twitter:description" content="'.$bd.'">
+// <meta name="twitter:image" content="http://philanthropycircuit.com/'.$info['image_1'].'">
+// <meta name="twitter:image:width" content="280">
+// <meta name="twitter:image:height" content="150">';
+// 	}
+//
+// 	elseif($page_name == "insight_post"){
+// 		$info = getPostInfo($conn,'insight',$_GET['id']);
+// 		$bd = previewBody($info['body'], 22);
+// 		echo '<meta property="og:title" content="'.$info['title'].'" />
+// 		    <meta property="og:image" content=http://philanthropycircuit.com/'.$info['image_1'].'" />
+// 				<meta property="og:image:width" content="450"/>
+// 		<meta property="og:image:height" content="298"/>
+// 		<meta property="og:description" content="'.$bd.'" />';
+//
+// echo '<meta name="twitter:card" content="summary_large_image">
+// <meta name="twitter:site" content="@mckodev">
+// <meta name="twitter:title" content="'.$info['title'].'">
+// <meta name="twitter:description" content="'.$bd.'">
+// <meta name="twitter:image" content="http://philanthropycircuit.com/'.$info['image_1'].'">
+// <meta name="twitter:image:width" content="280">
+// <meta name="twitter:image:height" content="150">';
+// }else{
+//
+//
+//
+// 	echo '<meta property="og:title" content="'.$page_title.'" />
+// 			<meta property="og:image" content=http://philanthropycircuit.com/" />
+// 			<meta property="og:image:width" content="450"/>
+// 	<meta property="og:image:height" content="298"/>
+// 	<meta property="og:description" content="" />';
+//
+// echo '<meta name="twitter:card" content="summary_large_image">
+// <meta name="twitter:site" content="@mckodev">
+// <meta name="twitter:title" content="'.$page_title.'">
+// <meta name="twitter:description" content="">
+// <meta name="twitter:image" content="http://philanthropycircuit.com/">
+// <meta name="twitter:image:width" content="280">
+// <meta name="twitter:image:height" content="150">';
+// }
 
-echo '<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@mckodev">
-<meta name="twitter:title" content="'.$info['title'].'">
-<meta name="twitter:description" content="'.$bd.'">
-<meta name="twitter:image" content="http://philanthropycircuit.com/'.$info['image_1'].'">
-<meta name="twitter:image:width" content="280">
-<meta name="twitter:image:height" content="150">';
-	}
-
-	elseif($page_name == "insight_post"){
-		$info = getPostInfo($conn,'insight',$_GET['id']);
-		$bd = previewBody($info['body'], 22);
-		echo '<meta property="og:title" content="'.$info['title'].'" />
-		    <meta property="og:image" content=http://philanthropycircuit.com/'.$info['image_1'].'" />
-				<meta property="og:image:width" content="450"/>
-		<meta property="og:image:height" content="298"/>
-		<meta property="og:description" content="'.$bd.'" />';
-
-echo '<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@mckodev">
-<meta name="twitter:title" content="'.$info['title'].'">
-<meta name="twitter:description" content="'.$bd.'">
-<meta name="twitter:image" content="http://philanthropycircuit.com/'.$info['image_1'].'">
-<meta name="twitter:image:width" content="280">
-<meta name="twitter:image:height" content="150">';
-}else{
 
 
-
-	echo '<meta property="og:title" content="'.$page_title.'" />
-			<meta property="og:image" content=http://philanthropycircuit.com/" />
-			<meta property="og:image:width" content="450"/>
-	<meta property="og:image:height" content="298"/>
-	<meta property="og:description" content="" />';
-
-echo '<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@mckodev">
-<meta name="twitter:title" content="'.$page_title.'">
-<meta name="twitter:description" content="">
-<meta name="twitter:image" content="http://philanthropycircuit.com/">
-<meta name="twitter:image:width" content="280">
-<meta name="twitter:image:height" content="150">';
-}
 	?>
 
 
@@ -84,6 +87,7 @@ echo '<meta name="twitter:card" content="summary_large_image">
 	<link type="text/css" rel="stylesheet" href="css/ot-lightbox.min.css" />
 	<link type="text/css" rel="stylesheet" href="css/shortcodes.min.css" />
 	<link type="text/css" rel="stylesheet" href="css/responsive.min.css" />
+	<script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5a9fde7b9c502900133c1aba&product=inline-share-buttons"></script>
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -150,9 +154,9 @@ echo '<meta name="twitter:card" content="summary_large_image">
 									<li><a href="about">About</a></li>
 									<li><a href="feature"><span>Features</span></a>
 										<ul class="sub-menu">
-											<li><a href="#">Witness Report</a></li>
+											<!-- <li><a href="#">Witness Report</a></li> -->
 											<li><a href="articles">Articles</a></li>
-											<li><a href="insight">insignts</a>
+											<li><a href="insight">Insignts</a>
 												<ul class="sub-menu">
 												<?php fetchFeatureLink($conn,'insights') ?>
 												</ul></li>
@@ -263,12 +267,12 @@ echo '<meta name="twitter:card" content="summary_large_image">
 									</li>
 									<li><a href="#"><span>Opportunities</span></a>
 										<ul class="sub-menu">
-											<li><a href="training">Trainings</a></li>
-											<li><a href="program">Events</a></li>
+											<li><a href="trainings">Trainings</a></li>
+											<li><a href="program">Programs/Seminars</a></li>
 										</ul>
 									</li>
 									<!-- <li><a href="team">Our Team</a></li> -->
-									<li><a href="archive">Report Event</a></li>
+									<!-- <li><a href="archive">Report Event</a></li> -->
 									<li><a href="campus"><span>Campus</span></a>
 										<ul class="sub-menu">
 											<li><a href="#">News</a>
