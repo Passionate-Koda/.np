@@ -1,6 +1,6 @@
 <?php
 ob_start();
-$page_title = "Insight - New.Mckodev";
+$page_title = "Insight - BoardSpeck";
 $page_name = "insight_post";
 include("include/header.php");
 
@@ -70,7 +70,7 @@ $SDate = decodeDate($date_created);
 Tweet</a></span>
 
 <span style="display:block;" class="item"><div class="fb-share-button" data-href="http://news.mckodev.com.ng/insight?id=<?php //echo $_GET['id'] ?>" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://news.mckodev.com.ng/insight?id=<?php// echo $_GET['id'] ?>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a> </div></span> -->
-<span class="item"><div class="sharethis-inline-share-buttons" data-url="/article?id=<?php echo $_GET['id'] ?>" data-title="<?php echo "Boardspeck - ".$title ?>" data-image></div></span>
+<span class="item"><div class="sharethis-inline-share-buttons" data-url="https://boardspeck/insight?id=<?php echo $_GET['id'] ?>" data-title="<?php echo "Boardspeck - ".$title ?>" data-image="https://boardspeck/'<?php echo $image_1 ?>'"></div></span>
 
                    </div>
 

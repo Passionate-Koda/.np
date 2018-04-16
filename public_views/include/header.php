@@ -1,3 +1,6 @@
+<?php
+ob_start();
+header("cache-control:no-cache"); ?>
 <!DOCTYPE HTML>
 <!-- BEGIN html -->
 <html lang = "en">
@@ -73,7 +76,7 @@
 
 
 	<!-- Favicon -->
-	<link rel="shortcut icon" href="images/favicon1.png" type="image/x-icon" />
+	<link rel="shortcut icon" href="images/logo3.jpg" type="image/x-icon" />
 
 	<!-- Stylesheets -->
 	<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700+Open+Sans:400,700" />
@@ -192,10 +195,10 @@
 
 												<div class="widget-split item">
 													<div class="widget">
-														<h3>Latest Reports</h3>
+														<h3>Latest Campus News</h3>
 														<div class="widget-content ot-w-article-list">
 
-															<?php getReportHeader($conn) ?>
+															<?php getCampusNewsHeader($conn) ?>
 
 														</div>
 													</div>
@@ -203,9 +206,9 @@
 
 												<div class="widget-split item">
 													<div class="widget">
-														<h3>Latest African News</h3>
+														<h3>Latest News</h3>
 														<div class="widget-content ot-w-article-list">
-															<?php 	getNewsHeader($conn, 'Africa') ?>
+															<?php 	getNewsHeader($conn, 'gia5235e9940N73ir') ?>
 															<!-- <div class="item">
 																<div class="item-header">
 																	<a href="#" class="img-read-later-button rm-btn-small">Read later</a>
@@ -245,7 +248,7 @@
 																<h3>Latest Global News</h3>
 																<div class="widget-content ot-w-article-list">
 
-																	<?php 	getNewsHeader($conn, 'Global') ?>
+																	<?php 	getNewsHeader($conn, '8a8ol2G34157b07l') ?>
 
 																</div>
 															</div>

@@ -60,7 +60,7 @@
 
 						<div class="widget-split item">
 							<div class="widget">
-								<h3>Reports</h3>
+								<h3>News</h3>
 								<div class="widget-content ot-w-article-list">
 
 									<?php getReportHeader2($conn) ?>
@@ -72,7 +72,7 @@
 					</div>
 
 					<div class="footer-copyright">
-						<p>&copy; <a href="http://philanthropycircuit.com/" target="_blank">Philanthropy Circuit</a> 2018. All rights reserved.</p>
+						<p>&copy; <a href="http://boardspeck.com/" target="_blank">BoardSpeck</a> 2018. All rights reserved.</p>
 					</div>
 
 				<!-- END .wrapper -->

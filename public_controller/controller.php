@@ -72,7 +72,7 @@ function getPostInfo($dbconn,$tb,$id){
 
 function getPreviewInsightsPost($dbconn){
   $vis = "Show";
-  $stmt = $dbconn->prepare("SELECT * FROM insight WHERE visibility=:sh ORDER BY id DESC LIMIT 5");
+  $stmt = $dbconn->prepare("SELECT * FROM news WHERE visibility=:sh ORDER BY id DESC LIMIT 7");
   $stmt->bindParam("sh", $vis);
   $stmt->execute();
   while($row = $stmt->fetch(PDO::FETCH_BOTH)){
@@ -81,10 +81,10 @@ function getPreviewInsightsPost($dbconn){
     $NDate = decodeDate($date_created);
     echo '<div class="item">
     <div class="item-header">
-    <a href="insight?id='.$hash_id.'"><div style="width:200px; height:150px; overflow:hidden"><img src="'.$image_1.'" alt="'.$title.'" /></div></a>
+    <a href="insight?id='.$hash_id.'"><div style="width:200px; height:150px; overflow:hidden"><img src="'.$image_1.'" alt="'.$headline.'" /></div></a>
     </div>
     <div class="item-content">
-    <h2><a href="insight?id='.$hash_id.'">'.$title.'</a></h2>
+    <h2><a href="insight?id='.$hash_id.'">'.$headline.'</a></h2>
     <span class="item-meta">
     <span class="item-meta-item"><i class="material-icons">access_time</i>'.$NDate.'</span>
     </span>
@@ -963,7 +963,7 @@ function getInsightHeader($dbconn){
     </div>';
   }
   echo'<span class="item-meta">
-  <a href="insights" class="item-meta-item meta-button">View More Insights <i class="fa fa-caret-right"></i></a>
+  <a href="insight" class="item-meta-item meta-button">View More Insights <i class="fa fa-caret-right"></i></a>
   </span>';
 
 }
@@ -990,17 +990,21 @@ function getInsightHeader2($dbconn){
     </div>';
   }
 }
-function getReportHeader($dbconn){
-  $vis = "Show";
-  $stmt = $dbconn->prepare("SELECT * FROM report WHERE visibility=:sh ORDER BY id DESC LIMIT 2" );
+function getCampusNewsHeader($dbconn){
+  $vis = "show";
+  $stmt = $dbconn->prepare("SELECT * FROM campus_news WHERE visibility=:sh ORDER BY id DESC LIMIT 2" );
   $stmt->bindParam(":sh", $vis);
   $stmt->execute();
   while($row = $stmt->fetch(PDO::FETCH_BOTH)){
     extract($row);
     $SDate = decodeDate($date_created);
     echo '<div class="item">
-    <div style="margin-left:10px" class="item-content">
-    <h4><a href="'.$link.'">'.$title.'</a></h4>
+    <div class="item-header">
+    <a href="campus_news?id='.$hash_id.'" class="img-read-later-button rm-btn-small">Read</a>
+    <a href="#"><img src="'.$image_1.'" alt="'.$headline.'" /></a>
+    </div>
+    <div class="item-content">
+    <h4><a href="campus_news?id='.$hash_id.'">'.$headline.'</a></h4>
     <span class="item-meta">
     <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
     </span>
@@ -1008,13 +1012,13 @@ function getReportHeader($dbconn){
     </div>';
   }
   echo'<span class="item-meta">
-  <a href="articles" class="item-meta-item meta-button">View More Articles <i class="fa fa-caret-right"></i></a>
+  <a href="campus_news" class="item-meta-item meta-button">View More Campus News <i class="fa fa-caret-right"></i></a>
   </span>';
 
 }
 function getReportHeader2($dbconn){
   $vis = "Show";
-  $stmt = $dbconn->prepare("SELECT * FROM report WHERE visibility=:sh ORDER BY id DESC LIMIT 2" );
+  $stmt = $dbconn->prepare("SELECT * FROM blog WHERE visibility=:sh ORDER BY id DESC LIMIT 2" );
   $stmt->bindParam(":sh", $vis);
   $stmt->execute();
   while($row = $stmt->fetch(PDO::FETCH_BOTH)){
@@ -1022,7 +1026,7 @@ function getReportHeader2($dbconn){
     $SDate = decodeDate($date_created);
     echo '<div class="item">
     <div style="margin-left:10px" class="item-content">
-    <h4><a href="'.$link.'">'.$title.'</a></h4>
+    <h4><a href="article?id='.$hash_id.'">'.$title.'</a></h4>
     <span class="item-meta">
     <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
     </span>
@@ -1042,24 +1046,24 @@ function getNewsHeader($dbconn,$rg){
     $SDate = decodeDate($date_created);
     echo '<div class="item">
     <div class="item-header">
-    <a href="'.$link.'" class="img-read-later-button rm-btn-small">Read</a>
-    <a href="'.$link.'"><img src="'.$image_1.'" alt="'.$headline.'" /></a>
+    <a href="new?id='.$hash_id.'" class="img-read-later-button rm-btn-small">Read</a>
+    <a href="new?id='.$hash_id.'"><img src="'.$image_1.'" alt="'.$headline.'" /></a>
     </div>
     <div class="item-content">
-    <h4><a href="'.$link.'">'.$headline.'</a></h4>
+    <h4><a href="new?id='.$hash_id.'">'.$headline.'</a></h4>
     <span class="item-meta">
     <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
     </span>
     </div>
     </div>';
   }
-  if($rg == "Africa"){
+  if($rg == "8a8ol2G34157b07l"){
     echo'<span class="item-meta">
-    <a href="africa" class="item-meta-item meta-button">View More News <i class="fa fa-caret-right"></i></a>
+    <a href="news?c=8a8ol2G34157b07l" class="item-meta-item meta-button">More Global News <i class="fa fa-caret-right"></i></a>
     </span>';
-  }elseif($rg == "Nigeria"){
+  }elseif($rg == "gia5235e9940N73ir"){
     echo'<span class="item-meta">
-    <a href="nigeria" class="item-meta-item meta-button">View More News <i class="fa fa-caret-right"></i></a>
+    <a href="news?c=gia5235e9940N73ir" class="item-meta-item meta-button">More Nigerian News <i class="fa fa-caret-right"></i></a>
     </span>';
   }
 

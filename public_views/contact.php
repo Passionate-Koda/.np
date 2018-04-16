@@ -1,5 +1,5 @@
 <?php
-$page_title = "Contact - New.Mckodev";
+$page_title = "Contact - BoardSpeck";
 $page_name = "contact";
 include("include/header.php");
  ?>
@@ -25,14 +25,14 @@ include("include/header.php");
  								<div class="composs-panel-inner">
  									<div class="map-block">
  										<div class="map-block-header">
- 											<h3>New.Mckodev </h3>
+ 											<h3>BoardSpeck </h3>
  											<div class="paragraph-row">
 
  												<div class="column4">
  													<ul>
- 														<li><i class="material-icons">phone</i>+2348030000000</li>
- 														<li><i class="material-icons">location_on</i>299, Ikorodu Road, Olatunji House. Idi-Iroko, Maryland. Lagos, Ilupeju 100001, Lagos</li>
- 														<li><a href="mailto:info@mail.com"><i class="material-icons">email</i>info@mail.com</a></li>
+ 														<li><i class="material-icons">phone</i> <a href="callto:08168785591">+2348168785591</a> </li>
+ 														<!-- <li><i class="material-icons">location_on</i>299, Ikorodu Road, Olatunji House. Idi-Iroko, Maryland. Lagos, Ilupeju 100001, Lagos</li> -->
+ 														<li><a href="mailto:info@boardspeck.com"><i class="material-icons">email</i>info@boardspeck.com</a></li>
  													</ul>
  												</div>
  												<div class="column4">
@@ -41,10 +41,10 @@ include("include/header.php");
  												</div>
  											</div>
  										</div>
- 										<div class="map-block-content google-maps">
+ 										<!-- <div class="map-block-content google-maps">
                       <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d990.9127101880074!2d3.366189884076693!3d6.565679294688696!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sng!4v1520420440411" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 
- 										</div>
+ 										</div> -->
  									</div>
  								</div>
 

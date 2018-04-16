@@ -1,5 +1,5 @@
 <?php
-$page_title = "Team - New.Mckodev";
+$page_title = "Team - BoardSpeck";
 $page_name = "team";
 include("include/header.php");
 

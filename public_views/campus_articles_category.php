@@ -1,5 +1,5 @@
 <?php
-$page_title = "Articles - New.Mckodev";
+$page_title = "Articles - BoardSpeck";
 $page_name = "article";
 include("include/header.php");
 
@@ -31,7 +31,7 @@ include("include/header.php");
                 <?php
                 $vis = "Show";
                 $page = 1;
-                $perPage = 1;
+                $perPage = 10;
 
 
                 if(isset($_GET['p'])){

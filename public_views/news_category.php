@@ -112,7 +112,15 @@ getCatPaginatedNews($conn,$offset,$perPage,$_GET['c']) ?>
 <!-- END .composs-main-content -->
 </div>
 <!-- BEGIN #sidebar -->
-  <?php include 'include/article_aside.php' ?>
+  <?php if($_GET['c'] == "gia5235e9940N73ir"){
+    include 'include/campus_news_aside.php';
+  }elseif($_GET['c'] == "7398irnA16fc538a4"){
+    include 'include/nigeria_aside.php';
+  }else{
+    include 'include/article_aside.php';
+  }
+
+   ?>
 
 </div>
 

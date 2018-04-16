@@ -368,6 +368,9 @@ switch ($uri[1]) {
   case "deleteCampusArticle?id=$id":
   include APP_PATH."/views/admin/delete_campus_article.php";
   break;
+  case "deleteCampusNews?id=$id":
+  include APP_PATH."/views/admin/delete_campus_news.php";
+  break;
   case "deleteEvent?id=$id":
   include APP_PATH."/views/admin/delete_event.php";
   break;
