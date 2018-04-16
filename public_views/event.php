@@ -61,6 +61,7 @@ include("include/header.php");
                     <!-- <i class="material-icons large-icon">location_on</i> -->
                   </div>
                 </div>
+                <span class="item"><div class="sharethis-inline-share-buttons" data-url="https://boardspeck.com/article?id=<?php echo $_GET['id'] ?>" data-title="<?php echo "Boardspeck - ".$name ?>"></div></span>
               </div>
               <div class="item">
 
@@ -85,50 +86,7 @@ include("include/header.php");
         <!-- END .wrapper -->
       </div>
 
-      <aside id="sidebar">
-
-        <!-- BEGIN .widget -->
-
-
-        <!-- BEGIN .widget -->
-
-        <div class="widget">
-          <h3>Latest Reports</h3>
-          <div class="widget-content ot-w-article-list">
-            <?php getReportPreview($conn) ?>
-
-
-          </div>
-          <!-- END .widget -->
-        </div>
-        <!-- BEGIN .widget -->
-
-
-        <!-- BEGIN .widget -->
-
-
-
-        <div class="widget">
-          <div class="widget-content">
-            <a href="#" target="_blank"><img src="images/o2.jpg" alt="" /></a>
-          </div>
-          <!-- END .widget -->
-        </div>
-
-        <!-- BEGIN .widget -->
-        <!--<div class="widget">-->
-        <!--  <h3>Latest articles</h3>-->
-        <!--  <div class="widget-content ot-w-article-list">-->
-        <!--    <?php //getArticlePreview($conn); ?>-->
-
-        <!--  </div>-->
-          <!-- END .widget -->
-        <!--</div>-->
-        <!-- BEGIN .widget -->
-
-
-        <!-- END #sidebar -->
-      </aside>
+      <?php include 'include/global_aside.php' ?>
 
       <!-- BEGIN .content -->
     </div>

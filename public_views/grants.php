@@ -1,7 +1,7 @@
 <?php
 ob_start();
-$page_title = "Grants - New.Mckodev";
-$page_name = "grant";
+$page_title = "Trainings - New.Mckodev";
+$page_name = "training";
 include("include/header.php");
 
 ?>
@@ -20,7 +20,7 @@ include("include/header.php");
         <div class="composs-panel">
 
           <div class="composs-panel-title">
-            <strong>Grants</strong>
+            <strong>Trainings</strong>
           </div>
 
           <div class="composs-panel-inner">
@@ -31,7 +31,7 @@ include("include/header.php");
 <?php
 $vis = "Show";
 $page = 1;
-$perPage = 10;
+$perPage = 2;
 
 
 if(isset($_GET['p'])){
@@ -66,9 +66,9 @@ getPaginatedGrant($conn,$offset,$perPage) ?>
   <?php if(isset($_GET['p'])){
     if($_GET['p'] >= 2){
       $prev = $_GET['p'] - 1;
-      echo '<a class="prev page-numbers" href="grants?p='.$prev.'"><i class="fa fa-angle-double-left"></i>Previous</a>';
+      echo '<a class="prev page-numbers" href="trainings?p='.$prev.'"><i class="fa fa-angle-double-left"></i>Previous</a>';
     }elseif($_GET['p'] == 2){
-      echo '<a class="prev page-numbers" href="grants"><i class="fa fa-angle-double-left"></i>Previous</a>';
+      echo '<a class="prev page-numbers" href="trainings"><i class="fa fa-angle-double-left"></i>Previous</a>';
     }
 
   }
@@ -81,69 +81,17 @@ getPaginatedGrant($conn,$offset,$perPage) ?>
   if($totalPages > 1 && $totalPages !=$finalPage ){
     if(isset($_GET['p'])){
       $next = $_GET['p'] + 1;
-      echo '<a class="next page-numbers" href="grants?p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
+      echo '<a class="next page-numbers" href="trainings?p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
     }else{
       $next = $page + 1;
-      echo '<a class="next page-numbers" href="grants?p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
+      echo '<a class="next page-numbers" href="trainings?p='.$next.'">Next<i class="fa fa-angle-double-right"></i></a>';
     }
   }
   ?>
 </div>
 </div>
 </div>
-<aside id="sidebar">
-  <div class="widget">
-    <?php
-    $error = [];
-    if(array_key_exists("submit", $_POST)){
-      if(empty($_POST['search'])){
-        $error['search'] = "Feild cannot be empty";
-      }
-      if(empty($error)){
-        $keyword =  str_replace(" ","-",$_POST['search']);
-        header("location:search?keyword=$keyword&rd=grants");
-      }
-    }
-    ?>
-    <form method="POST" class="search-form" action="">
-      <label>
-        <span class="screen-reader-text">Search for:</span>
-        <input type="search" class="search-field" placeholder="Search Grant …" value="" name="search" title="Search for:">
-      </label>
-      <input type="submit" class="search-submit screen-reader-text" name="submit" value="Search">
-    </form>
-    <!-- END .widget -->
-    <div class="widget">
-      <h3>Latest articles</h3>
-      <div class="widget-content ot-w-article-list">
-        <?php getArticlePreview($conn); ?>
-      </div>
-      <!-- END .widget -->
-    </div>
-
-
-    <div class="widget">
-      <div class="widget-content">
-        <a href="#" target="_blank"><img src="images/o2.jpg" alt="" /></a>
-      </div>
-      <!-- END .widget -->
-    </div>
-
-    <!-- BEGIN .widget -->
-    <div class="widget">
-      <h3>UPCOMING EVENTS</h3>
-      <div class="widget-content ot-w-comments-list">
-
-        <?php getPreviewEvent($conn) ?>
-
-      </div>
-      <!-- END .widget -->
-    </div>
-    <!-- BEGIN .widget -->
-
-
-    <!-- END #sidebar -->
-  </aside>
+  <?php include 'include/event_aside.php' ?>
 
 </div>
 

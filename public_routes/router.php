@@ -145,7 +145,10 @@ include APP_PATH."/public_views/index.php";
   include APP_PATH."/public_views/contact.php";
   break;
 
-  case "training?id=$id":
+  case "trainings?id=$id":
+  include APP_PATH."/public_views/grants.php";
+  break;
+  case "trainings?p=$p":
   include APP_PATH."/public_views/grants.php";
   break;
 
@@ -165,11 +168,15 @@ include APP_PATH."/public_views/index.php";
   include APP_PATH."/public_views/team.php";
   break;
 
-  case "training":
+  case "trainings":
   include APP_PATH."/public_views/grants.php";
   break;
 
   case "program":
+  include APP_PATH."/public_views/trainings.php";
+  break;
+
+  case "program?p=$p":
   include APP_PATH."/public_views/trainings.php";
   break;
 
@@ -250,14 +257,35 @@ include APP_PATH."/public_views/index.php";
   case "news?c=$c":
   include APP_PATH."/public_views/news_category.php";
   break;
+
   case "news?c=$c&p=$p":
   include APP_PATH."/public_views/news_category.php";
+  break;
+  case "campus_articles":
+  include APP_PATH."/public_views/campus_articles.php";
+  break;
+  case "campus_articles?p=$p":
+  include APP_PATH."/public_views/campus_articles.php";
+  break;
+
+  case "campus_articles?id=$id":
+  include APP_PATH."/public_views/campus_articles_post.php";
+  break;
+
+  case "campus_articles?c=$c":
+  include APP_PATH."/public_views/campus_articles_category.php";
+  break;
+  case "campus_articles?c=$c&p=$p":
+  include APP_PATH."/public_views/campus_articles_category.php";
   break;
   // case "news?cp=$cp":
   // include APP_PATH."/public_views/news_category.php";
   // break;
 
   case "campus_news":
+  include APP_PATH."/public_views/campus_news.php";
+  break;
+  case "campus_news?p=$p":
   include APP_PATH."/public_views/campus_news.php";
   break;
 
@@ -284,9 +312,9 @@ include APP_PATH."/public_views/index.php";
   include APP_PATH."/public_views/directory.php";
   break;
 
-  case "insight?p=$p":
-  include APP_PATH."/public_views/insight.php";
-  break;
+  // case "insight?p=$p":
+  // include APP_PATH."/public_views/insight.php";
+  // break;
 
   case "articles?p=$p":
   include APP_PATH."/public_views/articles.php";

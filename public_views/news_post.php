@@ -54,22 +54,22 @@ $SDate = decodeDate($date_created);
                  <h1><?php echo $headline ?></h1>
 
                  <div class="composs-main-article-head">
-                   <div class="composs-main-article-media" style="background:url('<?php echo $image_1 ?>') no-repeat center; background-size: cover; height: 70vh; width: 100%">
-                     <!-- <img src="<?php echo $image_1 ?>" alt="<?php// echo $title ?>" /> -->
+                   <div class="composs-main-article-media" >
+                     <img src="<?php echo $image_1 ?>" alt="<?php echo $title ?>" style="min-width:100%" />
                    </div>
                    <div class="composs-main-article-meta">
                      <span class="item"><i class="material-icons">access_time</i><?php echo $SDate ?></span>
                      <a href="#comments" class="item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://news.mckodev.com.ng/news?id=<?php echo $_GET['id'] ?>"></fb:comments-count> Comments</a>
                      <span class="item"><i class="fa fa-folder"></i><?php $categ = getEntityCategory($conn,'news_category','news_category',$category); echo $categ['news_category'];?></span>
-                     <span class="item"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
-<script type="IN/Share" data-url="http://philanthropycircuit/news?id=<?php echo $_GET['id'] ?>"></script></span>
+                     <!-- <span class="item"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+<script type="IN/Share" data-url="http://philanthropycircuit/news?id=<?php //echo $_GET['id'] ?>"></script></span>
 
  <span class="item"><a class="twitter-share-button"
   href="https://twitter.com/intent/tweet"
   data-size="small">
 Tweet</a></span>
 
-<span style="display:block;" class="item"><div class="fb-share-button" data-href="http://news.mckodev.com.ng/news?id=<?php echo $_GET['id'] ?>" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://news.mckodev.com.ng/news?id=<?php echo $_GET['id'] ?>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a> </div></span>
+<span style="display:block;" class="item"><div class="fb-share-button" data-href="http://news.mckodev.com.ng/news?id=<?php //echo $_GET['id'] ?>" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://news.mckodev.com.ng/news?id=<?php //echo $_GET['id'] ?>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a> </div></span> -->
 
                    </div>
 
@@ -101,51 +101,7 @@ Tweet</a></span>
        </div>
 
        <!-- BEGIN #sidebar -->
-       <aside id="sidebar">
-
-         <!-- BEGIN .widget -->
-
-
-         <!-- BEGIN .widget -->
-
-         <div class="widget">
-           <h3>Latest Reports</h3>
-           <div class="widget-content ot-w-article-list">
-             <?php getReportPreview($conn) ?>
-
-
-           </div>
-           <!-- END .widget -->
-         </div>
-         <!-- BEGIN .widget -->
-
-
-         <!-- BEGIN .widget -->
-
-
-
-         <div class="widget">
-           <div class="widget-content">
-             <a href="#" target="_blank"><img src="images/o2.jpg" alt="" /></a>
-           </div>
-           <!-- END .widget -->
-         </div>
-
-         <!-- BEGIN .widget -->
-         <div class="widget">
-           <h3>Latest articles</h3>
-           <div class="widget-content ot-w-article-list">
-
-             <?php getArticlePreview($conn); ?>
-
-           </div>
-           <!-- END .widget -->
-         </div>
-         <!-- BEGIN .widget -->
-
-
-         <!-- END #sidebar -->
-       </aside>
+         <?php include 'include/insight_aside.php' ?>
 
      </div>
 

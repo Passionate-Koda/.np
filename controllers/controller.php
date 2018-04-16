@@ -893,7 +893,7 @@ header("Location:/manageCampusNews?success=$succ");
    $words = explode(' ', $original_string);
    if(count($words) > $count){
      $words = array_slice($words, 0, $count);
-     $string = implode(' ', $words);
+     $string = implode(' ', $words)."...";
    }
    return $string;
  }
@@ -932,7 +932,7 @@ header("Location:/manageCampusNews?success=$succ");
            '.$campus.'</p>
            </td>
            <td class="ads-details-td">
-           <a href="viewBody?id='.$hash_id.'&t=campus_article"><p>'.$bd.'...</p></a>
+           <a href="viewBody?id='.$hash_id.'&t=campus_article"><p>'.$bd.'</p></a>
            </td>
            <td class="add-img-td">
            <a href="editImage?id='.$hash_id.'&t=campus_article">
@@ -976,7 +976,7 @@ header("Location:/manageCampusNews?success=$succ");
            '.$campus.'</p>
            </td>
            <td class="ads-details-td">
-           <a href="viewBody?id='.$hash_id.'&t=campus_article"><p>'.$bd.'...</p></a>
+           <a href="viewBody?id='.$hash_id.'&t=campus_article"><p>'.$bd.'</p></a>
            </td>
            <td class="add-img-td">
            <a href="editImage?id='.$hash_id.'&t=campus_article">
@@ -1013,7 +1013,7 @@ header("Location:/manageCampusNews?success=$succ");
            '.$campus.'</p>
            </td>
            <td class="ads-details-td">
-           <a href="viewBody?id='.$hash_id.'&t=campus_article"><p>'.$bd.'...</p></a>
+           <a href="viewBody?id='.$hash_id.'&t=campus_article"><p>'.$bd.'</p></a>
            </td>
            <td class="add-img-td">
            <a href="#">
@@ -1092,7 +1092,7 @@ header("Location:/manageCampusNews?success=$succ");
       '.$category.'</p>
       </td>
       <td class="ads-details-td">
-      <a href="viewBody?id='.$hash_id.'&t=news"><p>'.$bd.'...</p></a>
+      <a href="viewBody?id='.$hash_id.'&t=news"><p>'.$bd.'</p></a>
 
       </td>
       <td class="add-img-td">
@@ -1138,7 +1138,7 @@ header("Location:/manageCampusNews?success=$succ");
       '.$category.'</p>
       </td>
       <td class="ads-details-td">
-      <a href="viewBody?id='.$hash_id.'&t=news"><p>'.$bd.'...</p></a>
+      <a href="viewBody?id='.$hash_id.'&t=news"><p>'.$bd.'</p></a>
 
       </td>
       <td class="add-img-td">
@@ -1178,7 +1178,7 @@ header("Location:/manageCampusNews?success=$succ");
       '.$category.'</p>
       </td>
       <td class="ads-details-td">
-      <a href="viewBody?id='.$hash_id.'&t=news"><p>'.$bd.'...</p></a>
+      <a href="viewBody?id='.$hash_id.'&t=news"><p>'.$bd.'</p></a>
 
       </td>
       <td class="add-img-td">
@@ -1239,7 +1239,7 @@ header("Location:/manageCampusNews?success=$succ");
       '.$campus.'</p>
       </td>
       <td class="ads-details-td">
-      <a href="viewBody?id='.$hash_id.'&t=campus_news"><p>'.$bd.'...</p></a>
+      <a href="viewBody?id='.$hash_id.'&t=campus_news"><p>'.$bd.'</p></a>
 
       </td>
       <td class="add-img-td">
@@ -1284,7 +1284,7 @@ header("Location:/manageCampusNews?success=$succ");
       '.$campus.'</p>
       </td>
       <td class="ads-details-td">
-      <a href="viewBody?id='.$hash_id.'&t=campus_news"><p>'.$bd.'...</p></a>
+      <a href="viewBody?id='.$hash_id.'&t=campus_news"><p>'.$bd.'</p></a>
 
       </td>
       <td class="add-img-td">
@@ -1324,7 +1324,7 @@ header("Location:/manageCampusNews?success=$succ");
       '.$campus.'</p>
       </td>
       <td class="ads-details-td">
-      <a href="viewBody?id='.$hash_id.'&t=news"><p>'.$bd.'...</p></a>
+      <a href="viewBody?id='.$hash_id.'&t=news"><p>'.$bd.'</p></a>
 
       </td>
       <td class="add-img-td">
@@ -1507,7 +1507,7 @@ header("Location:/manageCampusNews?success=$succ");
            '.$author.'</p>
            </td>
            <td class="ads-details-td">
-           <a href="viewBody?id='.$hash_id.'&t=blog"><p>'.$bd.'...</p></a>
+           <a href="viewBody?id='.$hash_id.'&t=blog"><p>'.$bd.'</p></a>
            </td>
            <td class="add-img-td">
            <a href="editImage?id='.$hash_id.'&t=blog">
@@ -1549,7 +1549,7 @@ header("Location:/manageCampusNews?success=$succ");
            '.$author.'</p>
            </td>
            <td class="ads-details-td">
-           <a href="viewBody?id='.$hash_id.'&t=blog"><p>'.$bd.'...</p></a>
+           <a href="viewBody?id='.$hash_id.'&t=blog"><p>'.$bd.'</p></a>
            </td>
            <td class="add-img-td">
            <a href="editImage?id='.$hash_id.'&t=blog">
@@ -1584,7 +1584,7 @@ header("Location:/manageCampusNews?success=$succ");
            '.$author.'</p>
            </td>
            <td class="ads-details-td">
-           <a href="viewBody?id='.$hash_id.'&t=blog"><p>'.$bd.'...</p></a>
+           <a href="viewBody?id='.$hash_id.'&t=blog"><p>'.$bd.'</p></a>
            </td>
            <td class="add-img-td">
            <a href="#">
@@ -1637,7 +1637,7 @@ header("Location:/manageCampusNews?success=$succ");
            '.$category.'</p>
            </td>
            <td class="ads-details-td">
-           <a href="viewBody?id='.$hash_id.'&t=insight"><p>'.$bd.'...</p></a>
+           <a href="viewBody?id='.$hash_id.'&t=insight"><p>'.$bd.'</p></a>
            </td>
            <td class="add-img-td">
            <a href="editImage?id='.$hash_id.'&t=insight">
@@ -1679,7 +1679,7 @@ header("Location:/manageCampusNews?success=$succ");
            '.$category.'</p>
            </td>
            <td class="ads-details-td">
-           <a href="viewBody?id='.$hash_id.'&t=blog"><p>'.$bd.'...</p></a>
+           <a href="viewBody?id='.$hash_id.'&t=blog"><p>'.$bd.'</p></a>
            </td>
            <td class="add-img-td">
            <a href="editImage?id='.$hash_id.'&t=blog">
@@ -1714,7 +1714,7 @@ header("Location:/manageCampusNews?success=$succ");
            '.$category.'</p>
            </td>
            <td class="ads-details-td">
-           <a href="viewBody?id='.$hash_id.'&t=blog"><p>'.$bd.'...</p></a>
+           <a href="viewBody?id='.$hash_id.'&t=blog"><p>'.$bd.'</p></a>
            </td>
            <td class="add-img-td">
            <a href="#">
@@ -1793,7 +1793,7 @@ function getEvent($dbconn,$get){
       '.$end_date.'</p>
       </td>
       <td class="ads-details-td">
-      <a href="viewBody?id='.$hash_id.'&t=event"><p>'.$bd.'...</p></a>
+      <a href="viewBody?id='.$hash_id.'&t=event"><p>'.$bd.'</p></a>
       </td>
       <td class="add-img-td">
       '.$created_by.'
@@ -1824,7 +1824,7 @@ function getEvent($dbconn,$get){
       '.$end_date.'</p>
       </td>
       <td class="ads-details-td">
-      <a href="viewBody?id='.$hash_id.'&t=event"><p>'.$bd.'...</p></a>
+      <a href="viewBody?id='.$hash_id.'&t=event"><p>'.$bd.'</p></a>
       </td>
       <td class="add-img-td">
       '.$created_by.'
@@ -1854,7 +1854,7 @@ function getEvent($dbconn,$get){
       '.$end_date.'</p>
       </td>
       <td class="ads-details-td">
-      <a href="viewBody?id='.$hash_id.'&t=event"><p>'.$bd.'...</p></a>
+      <a href="viewBody?id='.$hash_id.'&t=event"><p>'.$bd.'</p></a>
       </td>
       <td class="add-img-td">
       '.$created_by.'
@@ -1885,7 +1885,7 @@ function getAbout($dbconn,$get){
 
     if($level == 3 || $level == "MASTER"){
       echo '<td class="ads-img-td">
-      <a href="viewBody?id='.$id.'&t=about"><p>'.$bd.'...</p></a>
+      <a href="viewBody?id='.$id.'&t=about"><p>'.$bd.'</p></a>
       </td>
       <td class="add-img-td">
       '.$added_by.'
@@ -1907,7 +1907,7 @@ function getAbout($dbconn,$get){
     }
     if($level == 2){
       echo '<td class="ads-img-td">
-      <a href="viewBody?id='.$id.'&t=about"><p>'.$bd.'...</p></a>
+      <a href="viewBody?id='.$id.'&t=about"><p>'.$bd.'</p></a>
       </td>
       <td class="add-img-td">
       '.$added_by.'
@@ -1930,7 +1930,7 @@ function getAbout($dbconn,$get){
     if($level == 1){
 
       echo '<td class="ads-img-td">
-      <a href="viewBody?id='.$id.'&t=about"><p>'.$bd.'...</p></a>
+      <a href="viewBody?id='.$id.'&t=about"><p>'.$bd.'</p></a>
       </td>
       <td class="add-img-td">
       '.$added_by.'
@@ -1977,7 +1977,7 @@ function getAbout($dbconn,$get){
        '.$link.'</p>
        </td>
        <td class="ads-details-td">
-       <a href="viewBody?id='.$hash_id.'&t='.$tb.'"><p>'.$bd.'...</p></a>
+       <a href="viewBody?id='.$hash_id.'&t='.$tb.'"><p>'.$bd.'</p></a>
        </td>
        <td class="add-img-td">
        '.$created_by.'
@@ -2014,7 +2014,7 @@ function getAbout($dbconn,$get){
        '.$link.'</p>
        </td>
        <td class="ads-details-td">
-       <a href="viewBody?id='.$hash_id.'&t='.$tb.'"><p>'.$bd.'...</p></a>
+       <a href="viewBody?id='.$hash_id.'&t='.$tb.'"><p>'.$bd.'</p></a>
        </td>
        <td class="add-img-td">
        '.$created_by.'
@@ -2045,7 +2045,7 @@ function getAbout($dbconn,$get){
        '.$link.'</p>
        </td>
        <td class="ads-details-td">
-       <a href="viewBody?id='.$hash_id.'&t='.$tb.'"><p>'.$bd.'...</p></a>
+       <a href="viewBody?id='.$hash_id.'&t='.$tb.'"><p>'.$bd.'</p></a>
        </td>
        <td class="add-img-td">
        '.$created_by.'

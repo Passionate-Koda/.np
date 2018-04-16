@@ -89,7 +89,7 @@ function getPreviewInsightsPost($dbconn){
     <span class="item-meta-item"><i class="material-icons">access_time</i>'.$NDate.'</span>
     </span>
     <a href="" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i>0</a>
-    <p>'.$bd.'...</p>
+    <p>'.$bd.'</p>
     </div>
     </div>';
   }
@@ -104,14 +104,14 @@ function getPreviewInsight($dbconn){
     $NDate = decodeDate($date_created);
     echo '<div class="item">
     <a href="insight?id='.$hash_id.'" class="main-slider-owl-title">'.$title.'</a>
-    <a href="insight?id='.$hash_id.'" class="main-slider-owl-calendar"><strong><i class="material-icons">access_time</i>'.$NDate.'</strong></a><div style="width:100%; height:80vh; overflow:hidden"><img src="'.$image_1.'" alt="" /></div>
+    <a href="insight?id='.$hash_id.'" class="main-slider-owl-calendar"><strong><i class="material-icons">access_time</i>'.$NDate.'</strong></a><div style="width:100%; max-height:80vh; overflow:hidden"><img src="'.$image_1.'" alt="" /></div>
 
     </div>';
   }
 }
 function getPreviewEvent($dbconn){
 
-  $stmt = $dbconn->prepare("SELECT * FROM event ORDER BY id DESC LIMIT 4" );
+  $stmt = $dbconn->prepare("SELECT * FROM event ORDER BY start_date ASC LIMIT 4" );
   $stmt->bindParam("sh", $vis);
   $stmt->execute();
   while($row = $stmt->fetch(PDO::FETCH_BOTH)){
@@ -131,9 +131,9 @@ function getPreviewEvent($dbconn){
 }
 
 function getArticlePreview($dbconn){
-  $vis = "Show";
-  $stmt = $dbconn->prepare("SELECT * FROM blog WHERE visibility=:sh ORDER BY id DESC LIMIT 4" );
-  $stmt->bindParam("sh", $vis);
+  $vis = "show";
+  $stmt = $dbconn->prepare("SELECT * FROM blog WHERE visibility=:sh ORDER BY id DESC LIMIT 3" );
+  $stmt->bindParam(":sh", $vis);
   $stmt->execute();
   while($row = $stmt->fetch(PDO::FETCH_BOTH)){
     extract($row);
@@ -154,6 +154,176 @@ function getArticlePreview($dbconn){
   }
   echo'<span class="item-meta">
   <a href="articles" class="item-meta-item meta-button">View More Articles <i class="fa fa-caret-right"></i></a>
+  </span>';
+
+}
+function getCampusArticlePreview($dbconn){
+  $vis = "show";
+  $stmt = $dbconn->prepare("SELECT * FROM campus_article WHERE visibility=:sh ORDER BY id DESC LIMIT 3" );
+  $stmt->bindParam(":sh", $vis);
+  $stmt->execute();
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    extract($row);
+    $SDate = decodeDate($date_created);
+
+    echo '  <div class="item">
+    <div class="item-header">
+    <a href="articles?id='.$hash_id.'" class="img-read-later-button rm-btn-small">Read</a>
+    <a href="articles?id='.$hash_id.'"><img src="'.$image_1.'" alt="'.$title.'" /></a>
+    </div>
+    <div class="item-content">
+    <h4><a href="articles?id='.$hash_id.'">'.$title.'</a></h4>
+    <span class="item-meta">
+    <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
+    </span>
+    </div>
+    </div>';
+  }
+  echo'<span class="item-meta">
+  <a href="campus_articles" class="item-meta-item meta-button">View More Campus Articles<i class="fa fa-caret-right"></i></a>
+  </span>';
+
+}
+function getCampusNewsPreview($dbconn){
+  $vis = "show";
+  $stmt = $dbconn->prepare("SELECT * FROM campus_news WHERE visibility=:sh ORDER BY id DESC LIMIT 3" );
+  $stmt->bindParam(":sh", $vis);
+  $stmt->execute();
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    extract($row);
+    $SDate = decodeDate($date_created);
+
+    echo '  <div class="item">
+    <div class="item-header">
+    <a href="campus_news?id='.$hash_id.'" class="img-read-later-button rm-btn-small">Read</a>
+    <a href="campus_news?id='.$hash_id.'"><img src="'.$image_1.'" alt="'.$headline.'" /></a>
+    </div>
+    <div class="item-content">
+    <h4><a href="campus_news?id='.$hash_id.'">'.$headline.'</a></h4>
+    <span class="item-meta">
+    <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
+    </span>
+    </div>
+    </div>';
+  }
+  echo'<span class="item-meta">
+  <a href="campus_news" class="item-meta-item meta-button">View More Campus News <i class="fa fa-caret-right"></i></a>
+  </span>';
+
+}
+function getGlobalNewsPreview($dbconn){
+  $vis = "show";
+  $cat = "8a8ol2G34157b07l";
+  $stmt = $dbconn->prepare("SELECT * FROM news WHERE visibility=:sh AND category=:cat ORDER BY id DESC LIMIT 3" );
+  $stmt->bindParam(":sh", $vis);
+  $stmt->bindParam(":cat", $cat);
+  $stmt->execute();
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    extract($row);
+    $SDate = decodeDate($date_created);
+
+    echo '  <div class="item">
+    <div class="item-header">
+    <a href="news?id='.$hash_id.'" class="img-read-later-button rm-btn-small">Read</a>
+    <a href="news?id='.$hash_id.'"><img src="'.$image_1.'" alt="'.$headline.'" /></a>
+    </div>
+    <div class="item-content">
+    <h4><a href="news?id='.$hash_id.'">'.$headline.'</a></h4>
+    <span class="item-meta">
+    <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
+    </span>
+    </div>
+    </div>';
+  }
+  echo'<span class="item-meta">
+  <a href="news?c='.$cat.'" class="item-meta-item meta-button">View More Global <i class="fa fa-caret-right"></i></a>
+  </span>';
+
+}
+function getAfricaNewsPreview($dbconn){
+  $vis = "show";
+  $cat = "7398irnA16fc538a4";
+  $stmt = $dbconn->prepare("SELECT * FROM news WHERE visibility=:sh AND category=:cat ORDER BY id DESC LIMIT 3" );
+  $stmt->bindParam(":sh", $vis);
+  $stmt->bindParam(":cat", $cat);
+  $stmt->execute();
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    extract($row);
+    $SDate = decodeDate($date_created);
+
+    echo '  <div class="item">
+    <div class="item-header">
+    <a href="news?id='.$hash_id.'" class="img-read-later-button rm-btn-small">Read</a>
+    <a href="news?id='.$hash_id.'"><img src="'.$image_1.'" alt="'.$headline.'" /></a>
+    </div>
+    <div class="item-content">
+    <h4><a href="news?id='.$hash_id.'">'.$headline.'</a></h4>
+    <span class="item-meta">
+    <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
+    </span>
+    </div>
+    </div>';
+  }
+  echo'<span class="item-meta">
+  <a href="news?c='.$cat.'" class="item-meta-item meta-button">View More African News <i class="fa fa-caret-right"></i></a>
+  </span>';
+
+}
+function getNigeriaNewsPreview($dbconn){
+  $vis = "show";
+  $cat = "gia5235e9940N73ir";
+  $stmt = $dbconn->prepare("SELECT * FROM news WHERE visibility=:sh AND category=:cat ORDER BY id DESC LIMIT 3" );
+  $stmt->bindParam(":sh", $vis);
+  $stmt->bindParam(":cat", $cat);
+  $stmt->execute();
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    extract($row);
+    $SDate = decodeDate($date_created);
+
+    echo '  <div class="item">
+    <div class="item-header">
+    <a href="news?id='.$hash_id.'" class="img-read-later-button rm-btn-small">Read</a>
+    <a href="news?id='.$hash_id.'"><img src="'.$image_1.'" alt="'.$headline.'" /></a>
+    </div>
+    <div class="item-content">
+    <h4><a href="news?id='.$hash_id.'">'.$headline.'</a></h4>
+    <span class="item-meta">
+    <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
+    </span>
+    </div>
+    </div>';
+  }
+  echo'<span class="item-meta">
+  <a href="news?c='.$cat.'" class="item-meta-item meta-button">View More Nigerian News <i class="fa fa-caret-right"></i></a>
+  </span>';
+
+}
+function getInsightPreview($dbconn){
+  $vis = "show";
+
+  $stmt = $dbconn->prepare("SELECT * FROM insight WHERE visibility=:sh  ORDER BY id DESC LIMIT 3" );
+  $stmt->bindParam(":sh", $vis);
+
+  $stmt->execute();
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    extract($row);
+    $SDate = decodeDate($date_created);
+
+    echo '  <div class="item">
+    <div class="item-header">
+    <a href="insight?id='.$hash_id.'" class="img-read-later-button rm-btn-small">Read</a>
+    <a href="insight?id='.$hash_id.'"><img src="'.$image_1.'" alt="'.$title.'" /></a>
+    </div>
+    <div class="item-content">
+    <h4><a href="insight?id='.$hash_id.'">'.$title.'</a></h4>
+    <span class="item-meta">
+    <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
+    </span>
+    </div>
+    </div>';
+  }
+  echo'<span class="item-meta">
+  <a href="insight" class="item-meta-item meta-button">View More Insignts <i class="fa fa-caret-right"></i></a>
   </span>';
 
 }
@@ -206,7 +376,7 @@ function getPaginatedInsight($dbconn,$fs,$pp){
     <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
     <a href="insight?id='.$hash_id.'" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://news.mckodev.com.ng/insight?id='.$hash_id.'"></fb:comments-count></a>
     </span>
-    <p>'.$bd.'...</p>
+    <p>'.$bd.'</p>
     </div>
     </div>';
   }
@@ -243,7 +413,7 @@ function getPaginatedNews($dbconn,$fs,$pp){
     <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
     <a href="insight?id='.$hash_id.'" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://news.mckodev.com.ng/insight?id='.$hash_id.'"></fb:comments-count></a>
     </span>
-    <p>'.$bd.'...</p>
+    <p>'.$bd.'</p>
     </div>
     </div>';
   }
@@ -262,7 +432,7 @@ function getPaginatedCampusNews($dbconn,$fs,$pp){
     echo '<div class="item">
     <div class="item-header">
     <a href="campus_news?id='.$hash_id.'" class="img-read-later-button">Read</a>
-    <a href="campus_news?id='.$hash_id.'"><div style="width:200px; height:150px; overflow:hidden"><img   src="'.$image_1.'" alt="'.$headline.'" /></div></a>
+    <a href="campus_news?id='.$hash_id.'"><div style="width:200px; height:150px; overflow:hidden"><img src="'.$image_1.'" alt="'.$headline.'" /></div></a>
     </div>
     <div class="item-content">
     <h2><a href="campus_news?id='.$hash_id.'">'.$headline.'</a></h2>
@@ -270,7 +440,7 @@ function getPaginatedCampusNews($dbconn,$fs,$pp){
     <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
     <a href="insight?id='.$hash_id.'" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://news.mckodev.com.ng/insight?id='.$hash_id.'"></fb:comments-count></a>
     </span>
-    <p>'.$bd.'...</p>
+    <p>'.$bd.'</p>
     </div>
     </div>';
   }
@@ -300,7 +470,7 @@ function getCatPaginatedInsight($dbconn,$fs,$pp,$cat){
     <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
     <a href="insight?id='.$hash_id.'" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://news.mckodev.com.ng/insight?id='.$hash_id.'"></fb:comments-count></a>
     </span>
-    <p>'.$bd.'...</p>
+    <p>'.$bd.'</p>
     </div>
     </div>';
   }
@@ -327,7 +497,7 @@ function getCatPaginatedNews($dbconn,$fs,$pp,$cat){
     <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
     <a href="insight?id='.$hash_id.'" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://news.mckodev.com.ng/insight?id='.$hash_id.'"></fb:comments-count></a>
     </span>
-    <p>'.$bd.'...</p>
+    <p>'.$bd.'</p>
     </div>
     </div>';
   }
@@ -355,7 +525,7 @@ function getCatPaginatedCampusNews($dbconn,$fs,$pp,$cat){
     <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
     <a href="insight?id='.$hash_id.'" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://news.mckodev.com.ng/insight?id='.$hash_id.'"></fb:comments-count></a>
     </span>
-    <p>'.$bd.'...</p>
+    <p>'.$bd.'</p>
     </div>
     </div>';
   }
@@ -371,7 +541,7 @@ function getPaginatedArticle($dbconn,$fs,$pp){
   while($row = $stmt->fetch(PDO::FETCH_BOTH)){
     extract($row);
     $SDate = decodeDate($date_created);
-    $bd = previewBody($body,3);
+    $bd = previewBody($body,33);
 
     echo '<div class="item">
     <div class="item-header">
@@ -384,7 +554,61 @@ function getPaginatedArticle($dbconn,$fs,$pp){
     <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
     <a href="insight?id='.$hash_id.'" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://news.mckodev.com.ng/article?id='.$hash_id.'"></fb:comments-count></a>
     </span>
-    <p>'.$bd.'...</p>
+    <p>'.$bd.'</p>
+    </div>
+    </div>';
+  }
+}
+function getPaginatedCampusArticle($dbconn,$fs,$pp){
+  $stmt = $dbconn->prepare("SELECT * FROM campus_article ORDER BY id DESC LIMIT $fs,$pp");
+  // $stmt->bindParam(":ff", $fs);
+  // $stmt->bindParam(":bk", $pp);
+  $stmt->execute();
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    extract($row);
+    $SDate = decodeDate($date_created);
+    $bd = previewBody($body,33);
+
+    echo '<div class="item">
+    <div class="item-header">
+    <a href="campus_articles?id='.$hash_id.'" class="img-read-later-button">Read</a>
+    <a href="campus_articles?id='.$hash_id.'"><div style="width:200px; height:150px; overflow:hidden"><img   src="'.$image_1.'" alt="'.$title.'" /></div></a>
+    </div>
+    <div class="item-content">
+    <h2><a href="campus_articles?id='.$hash_id.'">'.$title.'</a></h2>
+    <span class="item-meta">
+    <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
+    <a href="campus_articles?id='.$hash_id.'" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://news.mckodev.com.ng/article?id='.$hash_id.'"></fb:comments-count></a>
+    </span>
+    <p>'.$bd.'</p>
+    </div>
+    </div>';
+  }
+}
+function getCatPaginatedCampusArticle($dbconn,$fs,$pp,$cat){
+  $vis = "show";
+  $stmt = $dbconn->prepare("SELECT * FROM campus_article WHERE visibility=:sh AND campus=:cat ORDER BY id DESC LIMIT $fs,$pp");
+  $stmt->bindParam(":sh", $vis);
+  $stmt->bindParam(":cat", $cat);
+  // $stmt->bindParam(":bk", $pp);
+  $stmt->execute();
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    extract($row);
+    $SDate = decodeDate($date_created);
+    $bd = previewBody($body,33);
+
+    echo '<div class="item">
+    <div class="item-header">
+    <a href="campus_articles?id='.$hash_id.'" class="img-read-later-button">Read</a>
+    <a href="campus_articles?id='.$hash_id.'"><div style="width:200px; height:150px; overflow:hidden"><img   src="'.$image_1.'" alt="'.$title.'" /></div></a>
+    </div>
+    <div class="item-content">
+    <h2><a href="campus_articles?id='.$hash_id.'">'.$title.'</a></h2>
+    <span class="item-meta">
+    <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
+    <a href="campus_articles?id='.$hash_id.'" class="item-meta-item"><i class="material-icons">chat_bubble_outline</i><fb:comments-count href="http://news.mckodev.com.ng/article?id='.$hash_id.'"></fb:comments-count></a>
+    </span>
+    <p>'.$bd.'</p>
     </div>
     </div>';
   }
@@ -397,7 +621,7 @@ function getPaginatedAfrica($dbconn,$fs,$pp,$ct){
   while($row = $stmt->fetch(PDO::FETCH_BOTH)){
     extract($row);
     $SDate = decodeDate($date_created);
-    $bd = previewBody($body,3);
+    $bd = previewBody($body,33);
 
     echo '<div class="item">
     <div class="item-header">
@@ -422,7 +646,7 @@ function getPaginatedReport($dbconn,$fs,$pp){
   while($row = $stmt->fetch(PDO::FETCH_BOTH)){
     extract($row);
     $SDate = decodeDate($date_created);
-    $bd = previewBody($body,3);
+    $bd = previewBody($body,33);
 
     echo '<div class="item">
     <div class="item-content" style="margin-left:0px">
@@ -463,7 +687,7 @@ function getPaginatedEvent($dbconn,$fs,$pp){
   }
 }
 function getPaginatedGrant($dbconn,$fs,$pp){
-  $vis = "Show";
+  $vis = "show";
   $stmt = $dbconn->prepare("SELECT * FROM grants WHERE visibility=:vs ORDER BY id DESC LIMIT $fs,$pp");
 
   $stmt->bindParam(":vs", $vis);
@@ -473,17 +697,28 @@ function getPaginatedGrant($dbconn,$fs,$pp){
   while($row = $stmt->fetch(PDO::FETCH_BOTH)){
     extract($row);
     $SDate = decodeDate($date_created);
-    $bd = previewBody($body,33);
+    $bd = previewBody($body,22);
+
 
     echo '<div class="item">
     <div class="item-content" style="margin-left:0px">
     <h2><a href="'.$link.'">'.$title.'</a></h2>
     <span class="item-meta">
+    <a href="'.$link.'" class="item-meta-item meta-button">Visit Page<i class="fa fa-caret-right"></i></a>
+    </span>
+    <span class="item-meta">
     <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
     </span>
-    <p>'.$bd.'</p>
+    <p>'.$body.'</p>
     </div>
-    </div>';
+
+    <span class="item"><div class="sharethis-inline-share-buttons" data-description="'.$bd.'" data-url="https://boardspeck.com/training" data-title="Training - '.$title.'"></div></span>
+
+    </div>
+
+
+
+    ';
   }
 }
 
@@ -577,7 +812,7 @@ function getSearchResultCount($dbconn,$tb,$key,$fs,$pp){
 
 
 function getPaginatedTraining($dbconn,$fs,$pp){
-  $vis = "Show";
+  $vis = "show";
   $stmt = $dbconn->prepare("SELECT * FROM training WHERE visibility=:vs ORDER BY id DESC LIMIT $fs,$pp");
 
   $stmt->bindParam(":vs", $vis);
@@ -587,17 +822,19 @@ function getPaginatedTraining($dbconn,$fs,$pp){
   while($row = $stmt->fetch(PDO::FETCH_BOTH)){
     extract($row);
     $SDate = decodeDate($date_created);
-    $bd = previewBody($body,3);
+    $bd = previewBody($body,33);
 
     echo '<div class="item">
     <div class="item-content" style="margin-left:0px">
     <h2><a href="'.$link.'">'.$title.'</a></h2>
     <span class="item-meta">
+    <a href="'.$link.'" class="item-meta-item meta-button">Visit Page<i class="fa fa-caret-right"></i></a>
+    </span>
     <span class="item-meta-item"><i class="material-icons">access_time</i>'.$SDate.'</span>
 
-    </span>
     <p>'.$body.'</p>
     </div>
+    <span class="item"><div class="sharethis-inline-share-buttons" data-description="'.$bd.'" data-url="https://boardspeck.com/program" data-title="Would you love to attend? - '.$title.'"></div></span>
     </div>';
   }
 }
