@@ -64,7 +64,7 @@ $msg = str_replace('_', ' ', $_GET['success']);
 <div class="inner-box posting">
 <div class="alert alert-success alert-lg" role="alert">
 <h2 class="postin-title">✔ Congratulations! '.$msg.' </h2>
-<p>Thank you, McKodev is happy to have you around. Your Account will be Verified and you will be notified Via your Email Address</p>
+<p>Thank you, BoardSpeck is happy to have you around. Your Account will be Verified and you will be notified Via your Email Address</p>
 </div>
 </div>
 </div>';

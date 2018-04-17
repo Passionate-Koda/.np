@@ -183,6 +183,9 @@ include APP_PATH."/public_views/index.php";
   case "view_event":
   include APP_PATH."/public_views/view_event.php";
   break;
+  case "view_event?p=$p":
+  include APP_PATH."/public_views/view_event.php";
+  break;
 
   case "userRegistration":
   include APP_PATH."/public_views/add_user.php";

@@ -1,5 +1,6 @@
 <?php
 ob_start();
+header("cache-control:no-cache");
 $read = adminFullInfo($conn,$_SESSION['id']);
 if($read['defaulted'] >= 3){
   setLogout($conn,$_SESSION['id']);
@@ -20,7 +21,7 @@ if($read['defaulted'] >= 3){
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="author" content="GrayGrids Team">
-  <title>Philanthrophy Circuit</title>
+  <title>BoardSpeck</title>
 
 
 
@@ -90,8 +91,8 @@ if($read['defaulted'] >= 3){
           <!-- <li><a href="manageViews">Manage Views</a></li> -->
           <!-- <li><a href="adminRegistration">Add Admin</a></li> -->
           <!-- <li><a href="addProfile">Add Profile</a></li> -->
-          <li><a href="manageReports">Manage Reports</a></li>
-          <li><a href="manageGrants">Manage Grants</a></li>
+          <!-- <li><a href="manageReports">Manage Reports</a></li> -->
+          <!-- <li><a href="manageGrants">Manage Programs</a></li> -->
           <li><a href="managePrograms">Manage Program</a></li>
           <li><a href="manageCampusNews">Manage Campus News</a></li>
           <li><a href="manageCampusArticles">Manage Campus Articles</a></li>
@@ -135,12 +136,12 @@ if($read['defaulted'] >= 3){
           <li><a href="addNews">Add News</a></li>
           <li><a href="addCampusNews">Add Campus News</a></li>
           <li><a href="addInsight">Add Insight</a></li>
-          <li><a href="addReport">Add Report</a></li>
+          <!-- <li><a href="addReport">Add Report</a></li> -->
           <li><a href="addTraining">Add Training</a></li>
           <li><a href="addProgram">Add Program</a></li>
           <li><a href="addEvent">Add Event</a></li>
           <li><a href="addCampusArticle">Add Campus Article</a></li>
-          <li><a href="manageReports">Manage Reports</a></li>
+          <!-- <li><a href="manageReports">Manage Reports</a></li> -->
           <li><a href="managePrograms">Manage Programs</a></li>
           <li><a href="manageTrainings">Manage Trainings</a></li>
           <li><a href="manageNews">Manage News</a></li>
@@ -159,6 +160,7 @@ if($read['defaulted'] >= 3){
             <li><a href="addAbout">Add About Us</a></li>
             <li><a href="manageAbout">About Us</a></li>
             <li><a href="viewUsers">Manage Users</a></li>
+            <li><a href="log">Log</a></li>
           <?php } ?>
           <li> <a href="logout">Logout</a></li>
         <?php } ?>

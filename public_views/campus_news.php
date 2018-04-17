@@ -1,5 +1,5 @@
 <?php
-$page_title = "Campus News - New.Mckodev";
+$page_title = "Campus News - BoardSpeck";
 $page_name = "campus news";
 include("include/header.php");
 

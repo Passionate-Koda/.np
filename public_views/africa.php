@@ -1,5 +1,5 @@
 <?php
-$page_title = "Africa News - New.Mckodev";
+$page_title = "Africa News - BoardSpeck";
 $page_name = "news";
 include("include/header.php");
 

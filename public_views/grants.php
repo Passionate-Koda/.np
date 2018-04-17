@@ -1,6 +1,6 @@
 <?php
 ob_start();
-$page_title = "Trainings - New.Mckodev";
+$page_title = "Trainings - BoardSpeck";
 $page_name = "training";
 include("include/header.php");
 
@@ -31,7 +31,7 @@ include("include/header.php");
 <?php
 $vis = "Show";
 $page = 1;
-$perPage = 2;
+$perPage = 10;
 
 
 if(isset($_GET['p'])){

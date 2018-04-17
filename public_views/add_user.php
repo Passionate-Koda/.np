@@ -1,6 +1,6 @@
 <?php
 ob_start();
-$page_title = "Register - New.Mckodev";
+$page_title = "Register - BoardSpeck";
 $page_name = "register";
 include("include/header.php");
 

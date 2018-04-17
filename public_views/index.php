@@ -1,6 +1,6 @@
 <?php
 ob_start();
-$page_title = "Home - New.Mckodev";
+$page_title = "Home - BoardSpeck";
 $page_name = "home";
 include ("include/header.php");
 
@@ -69,7 +69,7 @@ include ("include/header.php");
         <div class="composs-panel">
 
           <div class="composs-panel-title">
-            <strong>Insights</strong>
+            <strong>News</strong>
           </div>
 
           <div class="composs-panel-inner">
@@ -84,7 +84,7 @@ include ("include/header.php");
 
           </div>
           <div class="composs-panel-pager">
-            <a href="insight" class="composs-pager-button">View more Insights</a>
+            <a href="news" class="composs-pager-button">View more News</a>
           </div>
 
 
